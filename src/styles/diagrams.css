@@ -7,10 +7,10 @@
 .venn .r-ml { inset: 20%; border-color: #a855f7; background: rgb(168 85 247 / 0.16); }
 .venn .r-dl { inset: 40%; border-color: #14b8a6; background: rgb(20 184 166 / 0.18); }
 .venn .rlab { position: absolute; left: 50%; transform: translateX(-50%); font-weight: 700; letter-spacing: 0.06em; white-space: nowrap; text-align: center; }
-.venn .l-ai { top: 4%; color: var(--accent-ink); }
-.venn .l-ml { top: 23.5%; color: #9333ea; }
-.venn .l-dl { top: 44.5%; color: var(--teal); }
-.venn .rlab small { display: block; font-weight: 400; font-size: 12px; color: var(--muted); letter-spacing: 0; max-width: 30ch; white-space: normal; }
+.venn .l-ai { top: 5%; color: var(--accent-ink); }
+.venn .l-ml { top: 26.5%; color: #7e22ce; }
+.venn .l-dl { top: 46.5%; color: #0f766e; }
+.venn .rlab small { display: block; font-weight: 500; font-size: 12px; color: #3b3b4f; letter-spacing: 0; max-width: 30ch; white-space: normal; margin-top: 3px; background: rgb(255 255 255 / 0.85); border-radius: 9px; padding: 1px 10px; }
 
 /* flow: numbered steps with arrows */
 .flow { display: flex; align-items: stretch; gap: 0; margin: 24px 0; flex-wrap: wrap; }

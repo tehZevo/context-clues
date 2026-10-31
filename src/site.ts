@@ -24,7 +24,7 @@ function indexPage(): PageDef {
     body: `<section class="hero">
     <p class="kicker">${SITE_NAME} · curriculum</p>
     <h1>Understand AI the way it actually works.</h1>
-    <p class="lede">No math required, no hype tolerated. Each course is a single page you can read start to finish — with interactive demos that make the ideas click.</p>
+    <p class="lede">No math required, no hype tolerated. Each course is a single page you can read start to finish, with interactive demos that make the ideas click.</p>
     <div class="cards">
     ${cards}
     </div>
@@ -40,7 +40,7 @@ function coursePage(): PageDef {
   return {
     out: '101/index.html',
     title: 'AI Foundations · 101',
-    desc: 'What AI, ML, and LLMs actually are — models, tokens, context windows, chat framing, and where the machinery lies.',
+    desc: 'What AI, ML, and LLMs actually are: models, tokens, context windows, chat framing, and where the machinery lies.',
     variant: 'page',
     root: '../',
     activeTab: '101',

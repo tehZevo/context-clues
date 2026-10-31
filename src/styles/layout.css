@@ -102,6 +102,8 @@ h2.sec-title { font-size: clamp(1.35rem, 3vw, 1.8rem); letter-spacing: -0.015em;
 .callout .c-title { font-weight: 700; display: block; margin-bottom: 4px; font-size: 13.5px; letter-spacing: 0.02em; }
 .callout p { margin: 0.3em 0; }
 .callout p:last-child { margin-bottom: 0; }
+.callout ul { margin: 6px 0 2px; padding-left: 20px; }
+.callout li { margin-block: 5px; line-height: 1.55; }
 .callout.note { background: var(--accent-soft); border-color: color-mix(in srgb, var(--accent) 35%, transparent); }
 .callout.warn { background: var(--warn-bg); border-color: var(--warn-line); color: var(--warn-ink); }
 .callout.tip { background: var(--tip-bg); border-color: var(--tip-line); color: var(--tip-ink); }

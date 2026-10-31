@@ -5,7 +5,7 @@ export function venn(): string {
   <span class="ring r-ai"></span><span class="ring r-ml"></span><span class="ring r-dl"></span>
   <figcaption class="rlab l-ai">AI<small>any intelligent action or output chosen by a machine</small></figcaption>
   <span class="rlab l-ml">ML<small>systems that learn patterns from examples</small></span>
-  <span class="rlab l-dl">DL<small>neural networks with many layers — a slice of ML</small></span>
+    <span class="rlab l-dl">DL<small>a slice of ML: neural networks with many layers</small></span>
 </figure>`;
 }
 

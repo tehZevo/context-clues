@@ -1,5 +1,6 @@
 import type { Section } from '../types.ts';
 import { chat } from '../../components/diagrams.ts';
+import { callout } from '../../components/ui.ts';
 
 const sycoChat = () =>
   chat([
@@ -16,12 +17,13 @@ export const SECTION: Section = {
   tagline: 'Frozen knowledge, confident wrongness, and a people-pleasing streak.',
   prose() {
     return `<div class="prose">
-<p><strong>Knowledge cutoff.</strong> A trained model is frozen at the moment its training ended. It doesn't know about events after that date unless a tool feeds it fresh information — ask about last week's news and you may get last year's confidence with none of the facts.</p>
+<p><strong>Knowledge cutoff.</strong> A trained model is frozen at the moment its training ended. It doesn't know about events after that date unless a tool feeds it fresh information. Ask about last week's news and you may get last year's confidence with none of the facts.</p>
 <p><strong>Hallucination.</strong> Because the machine predicts plausible text, not verified fact, it can be <em>confidently wrong</em>: invented citations, imaginary APIs, dates that sound right and aren't. Fluency is not accuracy.</p>
-<p><strong>Sycophancy.</strong> Trained to be helpful, these models tend to agree with you — even when you're wrong — and backpedal the moment you push back, even when they were right:</p>
+<p><strong>Sycophancy.</strong> Trained to be helpful, these models tend to agree with you, even when you're wrong, and backpedal the moment you push back — even when they were right:</p>
 ${sycoChat()}
 <p><strong>Verbosity.</strong> A model can comfortably generate more text in one reply than a human can read in a reasonable time. Volume is not value; prompting for brevity helps, but the default bias is toward <em>more</em>.</p>
-<p><strong>Bias &amp; censorship.</strong> Training data carries the biases of whoever wrote it — and model creators may deliberately steer results too: avoiding certain topics entirely, or choosing a particular side on political, cultural, or religious questions. And unless you're knowledgeable on the subject, you'd be none the wiser.</p>
+<p><strong>Bias &amp; censorship.</strong> Training data carries the biases of whoever wrote it, and model creators may deliberately steer results too: avoiding certain topics entirely, or choosing a particular side on political, cultural, or religious questions. And unless you're knowledgeable on the subject, you'd be none the wiser.</p>
+${callout("tip", "What to do", "<ul><li>Double-check anything load-bearing: names, numbers, dates, citations. Output is prediction, not lookup.</li><li>Don't paste confidential text (work code, contracts, personal documents) into hosted models; providers may train on it.</li><li>Treat a confident tone as style, not evidence.</li><li>Use AI for drafts, summaries and brainstorming where you review the result. Keep the judgment calls human.</li></ul>")}
 </div>`;
   },
 };

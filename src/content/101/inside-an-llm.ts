@@ -2,7 +2,7 @@ import type { Section } from '../types.ts';
 import { nextToken, tokenDemo, ctxWinDemo } from '../../components/diagrams.ts';
 
 const LONG_TEXT =
-  'A context window is the fixed-size budget of text an LLM can see at once. Everything you send — your question, the conversation so far, any files or pages you paste in — competes for that space. When the input grows past the edge of the window, it has to be handled somehow: older messages get trimmed away, long documents get compacted into summaries, or the request simply fails. This is why a chat that started three hours ago can “forget” what you told it on page one, and why throwing an entire book at a model usually means summarizing it first.';
+  'A context window is the fixed-size budget of text an LLM can see at once. Everything you send (your question, the conversation so far, any files or pages you paste in) competes for that space. When the input grows past the edge of the window, it has to be handled somehow: older messages get trimmed away, long documents get compacted into summaries, or the request simply fails. This is why a chat that started three hours ago can “forget” what you told it on page one, and why throwing an entire book at a model usually means summarizing it first.';
 
 export const SECTION: Section = {
   code: 'inside-an-llm',
@@ -11,7 +11,7 @@ export const SECTION: Section = {
   tagline: 'A glorified autocomplete over tokens, staring through a fixed-size window.',
   prose() {
     return `<div class="prose">
-<p>A <strong>large language model (LLM)</strong> is, at its core, a glorified autocomplete. It has read so much text that when it sees what came before, it can predict — token by token — what likely comes next.</p>
+<p>A <strong>large language model (LLM)</strong> is, at its core, a glorified autocomplete. It has read so much text that when it sees what came before, it can predict, token by token, what likely comes next.</p>
 <h3>Tokens: how models see text</h3>
 <p>Models don't process whole words the way you do. Words and characters are chopped into <strong>tokens</strong>, which can be:</p>
 <ul>
@@ -30,9 +30,9 @@ ${nextToken('Today, the weather in the desert will be', [
   { t: '"dry"', p: 13 },
   { t: '"crowded"', p: 3 },
 ])}
-<p class="chips-note">Illustrative numbers — but the shape of the process is exactly this.</p>
+<p class="chips-note">Illustrative numbers, but the shape of the process is exactly this.</p>
 <h3>The context window</h3>
-<p>An LLM can only see a <strong>large but fixed-size window</strong> of text at once. Inputs larger than the window have to be handled somehow: trimmed, or compacted into something smaller. In practice that plumbing lives in the software around the model — harnesses that summarize, cache, and re-feed context for you (more on that in 201 · Agentic AI).</p>
+<p>An LLM can only see a <strong>large but fixed-size window</strong> of text at once. Inputs larger than the window have to be handled somehow: trimmed, or compacted into something smaller. In practice that plumbing lives in the software around the model: harnesses that summarize, cache, and re-feed context for you (more on that in 201 · Agentic AI).</p>
 ${ctxWinDemo(LONG_TEXT)}
 <h3>Beyond text in</h3>
 <p>Modern LLMs are <strong>multimodal</strong>: not only text input/output, but images and audio go in too. The same predict-next-piece machinery still runs underneath — there's just more kinds of "pieces."</p>

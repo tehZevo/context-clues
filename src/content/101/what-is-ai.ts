@@ -10,9 +10,9 @@ export const SECTION: Section = {
   prose() {
     return `<div class="prose">
 <p><strong>Artificial intelligence</strong> isn't one technology. It's the label for any situation where a machine chooses an action or produces an output that we'd call <em>intelligent</em> if a person had done it: picking a chess move, filtering spam, suggesting your next video, writing a paragraph.</p>
-<p>There is no single recipe required to be "AI." Hand-written rules can do it. Statistics can do it. Neural networks — the current champions — do it by learning from examples.</p>
+<p>There is no single recipe required to be "AI." Hand-written rules can do it. Statistics can do it. Neural networks, the current champions, do it by learning from examples.</p>
 ${venn()}
-<p><strong>Machine learning (ML)</strong> is today's dominant approach inside that big AI circle: instead of a human coding every rule, you show the system many examples and let it discover the patterns. <strong>Deep learning (DL)</strong> is a slice of ML built from neural networks with many layers — it's what powers most of the "AI" in today's headlines.</p>
+<p><strong>Machine learning (ML)</strong> is today's dominant approach inside that big AI circle: instead of a human coding every rule, you show the system many examples and let it discover the patterns. <strong>Deep learning (DL)</strong> is a slice of ML built from neural networks with many layers. It's what powers most of the "AI" in today's headlines.</p>
 ${callout('note', 'Vocabulary shortcut', '<p>When someone says “AI” in casual conversation, they usually mean a deep-learning model — often an LLM. That’s a narrow slice of the circle above, not the whole thing.</p>')}
 </div>`;
   },
