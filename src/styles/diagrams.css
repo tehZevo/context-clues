@@ -38,6 +38,17 @@
 .fstep .fs-num { font-family: var(--mono); font-size: 11.5px; color: var(--accent); font-weight: 700; letter-spacing: 0.1em; }
 .fstep .fs-t { font-weight: 650; font-size: 14.5px; margin: 3px 0 2px; }
 .fstep .fs-d { color: var(--muted); font-size: 13px; line-height: 1.45; }
+.loop {
+  display: grid; grid-template-columns: minmax(0, 1fr) 44px minmax(0, 1fr);
+  gap: 6px 0; align-items: center; margin: 24px 0; max-width: 70ch;
+}
+.loop .fstep { width: 100%; }
+.loop .farrow { align-self: center; justify-self: center; padding-inline: 0; }
+.loop .fdown { align-self: stretch; justify-self: center; display: flex; align-items: center; }
+
+/* skill file example */
+.skill-file { background: var(--surface-2); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; overflow-x: auto; }
+.skill-file pre { font-family: var(--mono); font-size: 12.5px; line-height: 1.6; color: var(--ink); }
 
 /* token chips */
 .chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 14px 0; align-items: center; max-width: 75ch; }
