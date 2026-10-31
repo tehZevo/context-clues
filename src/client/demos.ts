@@ -74,6 +74,35 @@
     render();
   });
 
+  /* theme switcher: light / dark / system, persisted, defaults to system */
+  const themeBtns = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-theme-set]'));
+  if (themeBtns.length) {
+    const root = document.documentElement;
+    const current = (): string => {
+      try {
+        return localStorage.getItem('cc-theme') || 'system';
+      } catch {
+        return 'system';
+      }
+    };
+    const sync = (): void => {
+      const cur = current();
+      themeBtns.forEach((b) => b.classList.toggle('active', b.dataset.themeSet === cur));
+    };
+    const apply = (v: string): void => {
+      try {
+        localStorage.setItem('cc-theme', v);
+      } catch {
+        /* private mode */
+      }
+      if (v === 'system') root.removeAttribute('data-theme');
+      else root.setAttribute('data-theme', v);
+      sync();
+    };
+    themeBtns.forEach((b) => b.addEventListener('click', () => apply(b.dataset.themeSet!)));
+    sync();
+  }
+
   /* mobile hamburger for the TOC */
   const toc = document.querySelector<HTMLElement>('.toc');
   const tocToggle = document.querySelector<HTMLButtonElement>('.toc-toggle');
