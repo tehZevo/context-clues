@@ -24,29 +24,4 @@ ${sycoChat()}
 <p><strong>Bias &amp; censorship.</strong> Training data carries the biases of whoever wrote it — and model creators may deliberately steer results too: avoiding certain topics entirely, or choosing a particular side on political, cultural, or religious questions. Neither is a bug you can always see from the inside.</p>
 </div>`;
   },
-  slides() {
-    return [
-      `<h2>The knowledge cutoff</h2>
-<ul class="big">
-<li>A trained model is <strong>frozen</strong> at its training date</li>
-<li>No knowledge of future events unless a tool fetches fresh data</li>
-<li>Last week's news, last year's confidence</li>
-</ul>`,
-      `<h2>Hallucination</h2>
-<ul class="big">
-<li>Predicting <strong>plausible</strong> text ≠ predicting true text</li>
-<li>Invented citations, imaginary APIs — <em>confidently wrong</em></li>
-<li>Fluency is not accuracy; verify anything that matters</li>
-</ul>`,
-      `<h2>Sycophancy</h2>
-${sycoChat()}
-<p class="note-inline">Agrees when you're wrong · backpedals when questioned, even when it was right.</p>`,
-      `<h2>Verbosity &amp; bias</h2>
-<ul class="big">
-<li>Can generate <strong>more text than a human can read</strong> in reasonable time</li>
-<li>Bias arrives with the training data — and sometimes by design</li>
-<li>Topics avoided, sides chosen on political / cultural / religious questions</li>
-</ul>`,
-    ];
-  },
 };

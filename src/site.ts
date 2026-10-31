@@ -11,7 +11,7 @@ function indexPage(): PageDef {
       <h3>${esc(c.title)}</h3>
       <p class="tagline">${esc(c.tagline)}</p>`;
     return c.live
-      ? `<a class="card" href="${c.code}/">${inner}<span class="meta">${SECTIONS.length} sections · ${SECTIONS.length} slide decks</span></a>`
+      ? `<a class="card" href="${c.code}/">${inner}<span class="meta">${SECTIONS.length} sections</span></a>`
       : `<div class="card soon"><span class="soon-tag">coming soon</span>${inner}</div>`;
   }).join('\n    ');
 
@@ -24,7 +24,7 @@ function indexPage(): PageDef {
     body: `<section class="hero">
     <p class="kicker">${SITE_NAME} · curriculum</p>
     <h1>Understand AI the way it actually works.</h1>
-    <p class="lede">No math required, no hype tolerated. Each course is a single page you can read start to finish — every section ships with its own slide deck if you'd rather present it.</p>
+    <p class="lede">No math required, no hype tolerated. Each course is a single page you can read start to finish — with interactive demos that make the ideas click.</p>
     <div class="cards">
     ${cards}
     </div>
@@ -33,8 +33,8 @@ function indexPage(): PageDef {
 }
 
 function coursePage(): PageDef {
-  const jump = SECTIONS.map(
-    (s) => `<a href="#${s.code}"><span class="n">${String(s.num).padStart(2, '0')}</span>${esc(s.title)}</a>`,
+  const toc = SECTIONS.map(
+    (s) => `<a class="toc-link" href="#${s.code}"><span class="n">${String(s.num).padStart(2, '0')}</span>${esc(s.title)}</a>`,
   ).join('\n      ');
 
   return {
@@ -44,49 +44,30 @@ function coursePage(): PageDef {
     variant: 'page',
     root: '../',
     activeTab: '101',
-    body: `<section class="course-hero">
-    <span class="code-badge big">101</span>
-    <div>
-      <h1 style="margin-bottom:4px">AI Foundations</h1>
-      <p class="lede" style="font-size:16.5px">${SECTIONS.length} sections · each with its own slide deck · ~25 min read</p>
+    body: `<div class="course-layout">
+    <aside class="toc">
+      <p class="toc-title">Sections</p>
+      <button class="toc-toggle" aria-expanded="false" aria-controls="toc-list">
+        <svg width="18" height="14" viewBox="0 0 18 14" aria-hidden="true"><path d="M0 1h18M0 7h18M0 13h18" stroke="currentColor" stroke-width="2"/></svg>
+        Sections
+      </button>
+      <nav class="toc-list" id="toc-list" aria-label="Sections">
+      ${toc}
+      </nav>
+    </aside>
+    <div class="course-main">
+      <section class="course-hero">
+        <span class="code-badge big">101</span>
+        <div>
+          <h1 style="margin-bottom:4px">AI Foundations</h1>
+          <p class="lede" style="font-size:16.5px">${SECTIONS.length} sections · ~25 min read</p>
+        </div>
+      </section>
+${SECTIONS.map((s) => sectionHtml(s)).join('\n')}
     </div>
-  </section>
-  <nav class="jumpnav" aria-label="Sections">
-      ${jump}
-  </nav>
-${SECTIONS.map((s) => sectionHtml(s)).join('\n')}`,
-  };
-}
-
-function deckPages(): PageDef[] {
-  return SECTIONS.map((sec) => {
-    const st = `${String(sec.num).padStart(2, '0')} · ${esc(sec.title)}`;
-    const slides = [
-      `<section class="slide lead"><p class="st">AI Foundations · 101</p><h1>${esc(sec.title)}</h1><p class="sub">${esc(sec.tagline)}</p></section>`,
-      ...sec.slides().map((s) => `<section class="slide"><p class="st">${st}</p>${s}</section>`),
-    ].join('\n');
-
-    return {
-      out: `101/slides/${sec.code}.html`,
-      title: `${sec.num} · ${sec.title}`,
-      desc: sec.tagline,
-      variant: 'deck',
-      root: '../',
-      activeTab: '101',
-      body: `<div class="progress"></div>
-    <div class="deck-stage">
-${slides}
-    </div>
-    <p class="hint">&larr; &rarr; navigate · F fullscreen</p>
-    <div class="controls">
-      <span class="counter"></span>
-      <button class="deck-btn prev" aria-label="Previous slide">&larr;</button>
-      <button class="deck-btn next" aria-label="Next slide">&rarr;</button>
-      <button class="deck-btn fs" aria-label="Toggle fullscreen">&#x26F6;</button>
-    </div>`,
-    };
-  });
+  </div>`,
+};
 }
 
 export { shell } from './frame.ts';
-export const PAGES: PageDef[] = [indexPage(), coursePage(), ...deckPages()];
+export const PAGES: PageDef[] = [indexPage(), coursePage()];

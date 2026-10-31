@@ -1,5 +1,5 @@
 import { build } from 'esbuild';
-import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { createServer } from 'node:http';
 import { dirname, extname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -28,18 +28,14 @@ const mod = await import(`data:text/javascript;base64,${Buffer.from(siteCode).to
 const { PAGES, shell } = mod;
 
 const css = (
-  await Promise.all(['tokens', 'layout', 'diagrams', 'deck'].map((f) => readFile(src(`styles/${f}.css`), 'utf8')))
+  await Promise.all(['tokens', 'layout', 'diagrams'].map((f) => readFile(src(`styles/${f}.css`), 'utf8')))
 ).join('\n');
-const engine = await bundle(src('client/deck.ts'), true);
 const demos = await bundle(src('client/demos.ts'), true);
 
+await rm(distDir, { recursive: true, force: true });
 let bytes = 0;
 for (const p of PAGES) {
-  const html = inject(
-    inject(inject(shell(p), '__STYLE_CSS__', css), '__SCRIPT_ENGINE__', p.variant === 'deck' ? engine : ''),
-    '__SCRIPT_DEMOS__',
-    demos,
-  );
+  const html = inject(inject(shell(p), '__STYLE_CSS__', css), '__SCRIPT_DEMOS__', demos);
   bytes += html.length;
   const file = join(distDir, p.out);
   await mkdir(dirname(file), { recursive: true });

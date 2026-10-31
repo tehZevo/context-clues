@@ -4,5 +4,4 @@ export interface Section {
   title: string;
   tagline: string;
   prose(): string;
-  slides(): string[];
 }

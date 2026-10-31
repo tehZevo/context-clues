@@ -27,23 +27,4 @@ ${trainFlow()}
 <p>Training happens rarely and costs a lot. Inference happens constantly and is comparatively cheap. Every AI answer you have ever received was inference from an already-trained model.</p>
 </div>`;
   },
-  slides() {
-    return [
-      `<h2>A “model” = a learned function</h2>
-<ul class="big">
-<li>Takes an <strong>input</strong>, predicts an <strong>output</strong></li>
-<li>Email in → “spam / not spam” out; text in → next word out</li>
-<li>The patterns were <em>learned from examples</em>, not hand-coded rule by rule</li>
-</ul>`,
-      `<h2>Perceptrons → neural networks</h2>
-<ul class="big">
-<li>A <strong>perceptron</strong>: numbers in, weights applied, decision out</li>
-<li>Stack and connect thousands of them → a <strong>neural network</strong></li>
-<li>“Deep” learning just means many layers</li>
-</ul>`,
-      `<h2>Training vs. inference</h2>
-${trainFlow()}
-<p class="note-inline">Study thousands of spam emails = training. Flagging your next email = inference.</p>`,
-    ];
-  },
 };

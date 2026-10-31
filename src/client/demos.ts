@@ -71,12 +71,39 @@
     render();
   });
 
-  /* lazy-load deck iframes only when their <details> is opened */
-  document.querySelectorAll<HTMLDetailsElement>('details.deckembed').forEach((d) => {
-    const f = d.querySelector<HTMLIFrameElement>('iframe[data-src]');
-    if (!f) return;
-    d.addEventListener('toggle', () => {
-      if (d.open && !f.src) f.src = f.dataset.src ?? '';
+  /* mobile hamburger for the TOC */
+  const toc = document.querySelector<HTMLElement>('.toc');
+  const tocToggle = document.querySelector<HTMLButtonElement>('.toc-toggle');
+  if (toc && tocToggle) {
+    const setOpen = (v: boolean): void => {
+      toc.classList.toggle('open', v);
+      tocToggle.setAttribute('aria-expanded', String(v));
+    };
+    tocToggle.addEventListener('click', () => setOpen(!toc.classList.contains('open')));
+    for (const l of toc.querySelectorAll('.toc-link')) l.addEventListener('click', () => setOpen(false));
+    document.addEventListener('click', (e) => {
+      if (!(e.target instanceof Element) || !e.target.closest('.toc')) setOpen(false);
     });
-  });
+  }
+
+  /* scrollspy for the sticky course sidebar */
+  const links = Array.from(document.querySelectorAll<HTMLAnchorElement>('.toc-link'));
+  if (links.length) {
+    const byId = new Map<string, HTMLAnchorElement>();
+    for (const a of links) {
+      const sec = document.getElementById(a.getAttribute('href')!.slice(1));
+      if (sec) byId.set(sec.id, a);
+    }
+    const spy = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (!e.isIntersecting) continue;
+          links.forEach((l) => l.classList.remove('active'));
+          byId.get(e.target.id)?.classList.add('active');
+        }
+      },
+      { rootMargin: '-12% 0px -70% 0px' },
+    );
+    for (const id of byId.keys()) spy.observe(document.getElementById(id)!);
+  }
 })();

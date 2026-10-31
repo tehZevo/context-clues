@@ -13,17 +13,4 @@ export const SECTION: Section = {
 <p>Remember the context window from section 3: on every message, all of this — system prompt, history, your new line — is re-fed inside that fixed window. “Context” isn't memory; it's just what fit.</p>
 </div>`;
   },
-  slides() {
-    return [
-      `<h2>Prompt vs. context</h2>
-<ul class="big">
-<li><strong>Prompt:</strong> the text you send right now</li>
-<li><strong>Context:</strong> everything visible when answering — your message + history + hidden instructions</li>
-<li>Re-fed through the fixed window on every single turn</li>
-</ul>`,
-      `<h2>The system prompt</h2>
-<div class="ntq">SYSTEM: You are a careful tutor. Never give the final answer before the student tries.<span class="caret">&#9613;</span></div>
-<p class="sub">Instructions on how to respond, what to say — and what not to say. Same model, different product, different system prompt.</p>`,
-    ];
-  },
 };

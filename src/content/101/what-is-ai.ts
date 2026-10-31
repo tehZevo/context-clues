@@ -16,23 +16,4 @@ ${venn()}
 ${callout('note', 'Vocabulary shortcut', '<p>When someone says “AI” in casual conversation, they usually mean a deep-learning model — often an LLM. That’s a narrow slice of the circle above, not the whole thing.</p>')}
 </div>`;
   },
-  slides() {
-    return [
-      `<h2>“Artificial intelligence”, plainly</h2>
-<ul class="big">
-<li>Any intelligent <strong>action or output chosen by a machine</strong></li>
-<li>No single required technique — rules, statistics, or learned models</li>
-<li>Chess engines, spam filters, recommendations, and LLMs are all AI</li>
-</ul>`,
-      `<h2>AI ⊃ ML ⊃ DL</h2>
-${venn()}
-<p class="note-inline">Deep learning is a slice of machine learning, which is a slice of AI.</p>`,
-      `<h2>Why “learning” won</h2>
-<ul class="big">
-<li>Hand-written rules are brittle — someone must think of every case</li>
-<li><strong>ML:</strong> show thousands of examples, let the system find the patterns</li>
-<li><strong>DL:</strong> ML with deep neural networks — the engine behind modern AI</li>
-</ul>`,
-    ];
-  },
 };

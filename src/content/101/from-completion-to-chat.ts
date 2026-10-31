@@ -16,25 +16,4 @@ export const SECTION: Section = {
 <p>That framing trick is ChatGPT. The entire chat product you know — bubbles, send buttons, history — is a friendly skin over one long text document that keeps getting continued.</p>
 </div>`;
   },
-  slides() {
-    return [
-      `<h2>The completion era</h2>
-<div class="ntq">1 + 1 =<span class="caret">&#9613;</span></div>
-<p class="sub">…continues as <strong>“2”</strong> — the most likely next text.</p>
-<div class="ntq">Today, the weather in the desert will be<span class="caret">&#9613;</span></div>
-<p class="sub">…continues as <strong>“sunny”</strong>.</p>`,
-      `<h2>The chat-log trick</h2>
-<ul class="big">
-<li>Framed the prompt as a <strong>transcript</strong>: <code>User: … Assistant:</code></li>
-<li>The engine keeps the transcript going — it “responds” to you</li>
-<li>ChatGPT = completion + conversation-shaped framing</li>
-</ul>`,
-      `<h2>What a chat really is</h2>
-<ul class="big">
-<li>Bubbles and send buttons are a <strong>skin over one long document</strong></li>
-<li>Your history, re-read top to bottom on every message</li>
-<li>The model is always doing the same thing: continuing text</li>
-</ul>`,
-    ];
-  },
 };

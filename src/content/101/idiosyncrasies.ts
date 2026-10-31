@@ -21,17 +21,4 @@ ${chips(
 <p>None of these are reliable on their own, and the list is a <strong>moving target</strong>: as models update, old tells fade and new ones form. Treat them like accents, not fingerprints.</p>
 </div>`;
   },
-  slides() {
-    return [
-      `<h2>Tells of machine-written text</h2>
-<ul class="big">
-<li><strong>Em dashes (—)</strong> at supernatural density</li>
-<li><strong>Purple prose</strong> — ornate, flowery, overreaching</li>
-<li>Stock <strong>catchphrases</strong>, recycled everywhere</li>
-</ul>`,
-      `<h2>The phrase hall of fame</h2>
-${chips(['“you’re right to push back”', '“the smoking gun”', '“the classic ___”', 'Elias Thorne', 'Elara Thorne'])}
-<p class="note-inline">These change over time — old tells fade, new ones form. Accents, not fingerprints.</p>`,
-    ];
-  },
 };

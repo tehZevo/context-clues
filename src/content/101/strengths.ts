@@ -16,16 +16,4 @@ export const SECTION: Section = {
 <p>Notice the pattern: all of these are <em>text transformations</em> where a good-enough draft at machine speed is worth more than a slow perfect one. The next section covers what happens when you ask for more than that.</p>
 </div>`;
   },
-  slides() {
-    return [
-      `<h2>Text transformations at machine speed</h2>
-<ul class="big">
-<li><strong>Read &amp; summarize</strong> thousands of words in seconds</li>
-<li><strong>Brainstorm</strong> — twenty options cost the same as one</li>
-<li><strong>Rewrite</strong> — any idea, any register, any audience</li>
-</ul>`,
-      `<h2>The pattern</h2>
-<p class="sub">Where a good-enough draft at machine speed beats a slow perfect one, an LLM is genuinely strong. Where facts, judgment, or currency matter — read on.</p>`,
-    ];
-  },
 };
