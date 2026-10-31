@@ -43,7 +43,7 @@ ${callout('tip', 'Why this matters for safety', '<p>The model never touches your
 ${exercise('Try it: watch an agent use its tools', [
   'Ask any agent to research something or read and summarize a web page for you, like \u201cread this page and give me five bullet points\u201d.',
   'Look for the paper trail while it works: many agents show the tool calls as they happen (\u201csearching\u2026\u201d, \u201cfetching page\u2026\u201d) or list web references in the answer.',
-  'Ask the same question with web access off. The difference between the two answers is what the tools added.',
+  'Open one of the pages it cited and check the summary against what the page actually says.',
 ], 'The model did not magically know the page. It asked the harness to fetch it, then read the result like any other text.')}
 </div>`;
   },
