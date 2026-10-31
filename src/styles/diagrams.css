@@ -46,6 +46,10 @@
 .loop .farrow { align-self: center; justify-self: center; padding-inline: 0; }
 .loop .fdown { align-self: stretch; justify-self: center; display: flex; align-items: center; }
 
+/* skill file example */
+.skill-file { background: var(--surface-2); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; overflow-x: auto; }
+.skill-file pre { font-family: var(--mono); font-size: 12.5px; line-height: 1.6; color: var(--ink); }
+
 /* token chips */
 .chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 14px 0; align-items: center; max-width: 75ch; }
 .chip {

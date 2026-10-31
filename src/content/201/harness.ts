@@ -1,6 +1,6 @@
 import type { Section } from '../types.ts';
 import { esc } from '../../frame.ts';
-import { callout } from '../../components/ui.ts';
+import { callout, exercise } from '../../components/ui.ts';
 
 const ARROW_R = '<svg width="28" height="16" viewBox="0 0 28 16" aria-hidden="true"><line x1="1" y1="8" x2="19" y2="8" stroke="currentColor" stroke-width="2"/><polygon points="18,2 28,8 18,14" fill="currentColor"/></svg>';
 const ARROW_L = '<svg width="28" height="16" viewBox="0 0 28 16" aria-hidden="true"><line x1="9" y1="8" x2="27" y2="8" stroke="currentColor" stroke-width="2"/><polygon points="10,2 0,8 10,14" fill="currentColor"/></svg>';
@@ -40,6 +40,11 @@ export const SECTION: Section = {
 ${loop()}
 <p>That loop, repeated a few dozen times, is what looks like an AI “using a computer.” The model decides each step; the harness carries it out.</p>
 ${callout('tip', 'Why this matters for safety', '<p>The model never touches your files or your email. The harness does, and the harness is ordinary software you control: it is where approvals, permissions and activity logs live.</p>')}
+${exercise('Try it: watch an agent use its tools', [
+  'Ask any agent to research something or read and summarize a web page for you, like \u201cread this page and give me five bullet points\u201d.',
+  'Look for the paper trail while it works: many agents show the tool calls as they happen (\u201csearching\u2026\u201d, \u201cfetching page\u2026\u201d) or list web references in the answer.',
+  'Ask the same question with web access off. The difference between the two answers is what the tools added.',
+], 'The model did not magically know the page. It asked the harness to fetch it, then read the result like any other text.')}
 </div>`;
   },
 };
