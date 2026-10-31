@@ -1,6 +1,5 @@
 /* ---- page shell & typography ---- */
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
 body.page {
   margin: 0; background: var(--bg); color: var(--ink);
   font: 16px/1.65 var(--font); -webkit-font-smoothing: antialiased;
@@ -57,7 +56,10 @@ a.card:hover { transform: translateY(-2px); border-color: var(--accent); }
 .course-hero { display: flex; gap: 20px; align-items: center; padding-block: 6px; }
 .code-badge.big { font-size: 24px; padding: 10px 16px; border-radius: 12px; }
 .course-layout { display: grid; grid-template-columns: 236px minmax(0, 1fr); gap: 52px; }
-.toc-list { position: sticky; top: 68px; display: flex; flex-direction: column; gap: 2px; }
+.toc-list {
+  position: sticky; top: 68px; display: flex; flex-direction: column; gap: 2px;
+  max-height: calc(100vh - 92px); overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin;
+}
 .toc-toggle { display: none; }
 .toc-title { font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin: 0 0 8px 10px; }
 .toc-link { display: flex; gap: 9px; align-items: baseline; padding: 7px 10px; border-radius: 9px; font-size: 13.5px; color: var(--muted); text-decoration: none; line-height: 1.35; }
@@ -103,3 +105,12 @@ h2.sec-title { font-size: clamp(1.35rem, 3vw, 1.8rem); letter-spacing: -0.015em;
 .callout.note { background: var(--accent-soft); border-color: color-mix(in srgb, var(--accent) 35%, transparent); }
 .callout.warn { background: var(--warn-bg); border-color: var(--warn-line); color: var(--warn-ink); }
 .callout.tip { background: var(--tip-bg); border-color: var(--tip-line); color: var(--tip-ink); }
+
+/* ---- exercise card ---- */
+.exercise { margin: 26px 0; padding: 18px 20px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow); max-width: 75ch; }
+.exercise .ex-title { display: flex; gap: 10px; align-items: center; font-weight: 700; margin: 0 0 12px; font-size: 14.5px; }
+.exercise .ex-badge { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: #fff; background: var(--grad); border-radius: 6px; padding: 3px 8px; }
+.exercise ol { margin: 0; padding-left: 22px; max-width: none; }
+.exercise li { margin-block: 10px; font-size: 14.5px; line-height: 1.6; }
+.exercise li::marker { color: var(--accent); font-weight: 700; font-family: var(--mono); font-size: 13px; }
+.exercise .ex-takeaway { margin: 14px 0 0; padding-top: 12px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13.5px; }

@@ -7,10 +7,14 @@
     const countEl = root.querySelector<HTMLElement>('[data-count]');
     if (!input || !chips) return;
 
+    const GLUE = '\u2060';
     const tokenize = (t: string): { text: string; punct: boolean }[] => {
       const out: { text: string; punct: boolean }[] = [];
-      for (const chunk of t.split(/\s+/).filter(Boolean)) {
-        for (const m of chunk.match(/[\p{L}\p{N}'-]+|[^\p{L}\p{N}]+/gu) ?? []) {
+      const glued = t
+        .replace(/\bnew\s+york\b/gi, (m) => m.replace(/\s+/g, GLUE))
+        .replace(/(unbeliev)able/gi, '$1 able');
+      for (const chunk of glued.split(/\s+/).filter(Boolean)) {
+        for (const m of chunk.match(/[\p{L}\p{N}'\u2060-]+|[^\p{L}\p{N}]+/gu) ?? []) {
           out.push({ text: m, punct: !/[\p{L}\p{N}]/u.test(m) });
         }
       }
@@ -23,7 +27,7 @@
         ? tokens
             .map(
               (t) =>
-                `<span class="chip${t.punct ? ' punct' : ''}">${t.text.replace(/&/g, '&amp;').replace(/</g, '&lt;')}</span>`,
+                `<span class="chip${t.punct ? ' punct' : ''}">${t.text.replace(/\u2060/g, ' ').replace(/&/g, '&amp;').replace(/</g, '&lt;')}</span>`,
             )
             .join('')
         : '<span class="chips-note">type something above…</span>';
@@ -53,17 +57,15 @@
 
     slider.max = String(words.length);
     slider.min = String(Math.max(4, Math.floor(words.length / 6)));
-    if (!slider.value || Number(slider.value) > words.length) {
-      slider.value = String(Math.ceil(words.length * 0.45));
-    }
+    slider.value = String(words.length);
 
     const render = (): void => {
       const n = Math.min(Number(slider.value), words.length);
       spans.forEach((s, k) => s.classList.toggle('out', k >= n));
       if (meta) {
         meta.innerHTML =
-          `<span>window: first ${n} of ${words.length} words</span>` +
-          `<span>${words.length - n > 0 ? `${words.length - n} beyond the window — trimmed or compacted` : 'whole input fits'}</span>`;
+          `<span>window: last ${words.length - n} word${words.length - n === 1 ? '' : 's'} dropped from the end</span>` +
+          `<span>${words.length - n > 0 ? `${n} of ${words.length} still in the window` : 'whole input fits — drag left to drop words'}</span>`;
       }
     };
 

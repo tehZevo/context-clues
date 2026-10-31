@@ -1,5 +1,6 @@
 import type { Section } from '../types.ts';
 import { chips } from '../../components/diagrams.ts';
+import { callout } from '../../components/ui.ts';
 
 export const SECTION: Section = {
   code: 'idiosyncrasies',
@@ -19,6 +20,7 @@ ${chips(
   'Fictional placeholder names — “Elias/Elara Thorne” — show up so often they became a meme.',
 )}
 <p>None of these are reliable on their own, and the list is a <strong>moving target</strong>: as models update, old tells fade and new ones form. Treat them like accents, not fingerprints.</p>
+${callout("tip", "Did you notice?", "<p>Have you noticed any tells in this lesson so far? What would you say about AI's involvement in this course?</p>")}
 </div>`;
   },
 };

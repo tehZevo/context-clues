@@ -21,7 +21,7 @@ export const SECTION: Section = {
 <p><strong>Sycophancy.</strong> Trained to be helpful, these models tend to agree with you — even when you're wrong — and backpedal the moment you push back, even when they were right:</p>
 ${sycoChat()}
 <p><strong>Verbosity.</strong> A model can comfortably generate more text in one reply than a human can read in a reasonable time. Volume is not value; prompting for brevity helps, but the default bias is toward <em>more</em>.</p>
-<p><strong>Bias &amp; censorship.</strong> Training data carries the biases of whoever wrote it — and model creators may deliberately steer results too: avoiding certain topics entirely, or choosing a particular side on political, cultural, or religious questions. Neither is a bug you can always see from the inside.</p>
+<p><strong>Bias &amp; censorship.</strong> Training data carries the biases of whoever wrote it — and model creators may deliberately steer results too: avoiding certain topics entirely, or choosing a particular side on political, cultural, or religious questions. And unless you're knowledgeable on the subject, you'd be none the wiser.</p>
 </div>`;
   },
 };

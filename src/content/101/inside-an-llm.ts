@@ -21,7 +21,7 @@ export const SECTION: Section = {
 <li>punctuation or symbols</li>
 <li>or any combination of the above</li>
 </ul>
-${tokenDemo("Unbelievable — New York's tokenization is 4 tokens?")}
+${tokenDemo("Unbelievable! New York is only one token?")}
 <h3>The next-token game</h3>
 <p>Generation is just this prediction repeated. Given a prompt, the model scores what could come next and picks one:</p>
 ${nextToken('Today, the weather in the desert will be', [
@@ -32,7 +32,7 @@ ${nextToken('Today, the weather in the desert will be', [
 ])}
 <p class="chips-note">Illustrative numbers — but the shape of the process is exactly this.</p>
 <h3>The context window</h3>
-<p>An LLM can only see a <strong>large but fixed-size window</strong> of text at once. Inputs larger than the window need to be compacted or trimmed — which is why very long chats start to "forget," and whole books usually arrive as summaries.</p>
+<p>An LLM can only see a <strong>large but fixed-size window</strong> of text at once. Inputs larger than the window have to be handled somehow: trimmed, or compacted into something smaller. In practice that plumbing lives in the software around the model — harnesses that summarize, cache, and re-feed context for you (more on that in 201 · Agentic AI).</p>
 ${ctxWinDemo(LONG_TEXT)}
 <h3>Beyond text in</h3>
 <p>Modern LLMs are <strong>multimodal</strong>: not only text input/output, but images and audio go in too. The same predict-next-piece machinery still runs underneath — there's just more kinds of "pieces."</p>

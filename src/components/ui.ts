@@ -5,6 +5,14 @@ export function callout(kind: 'note' | 'warn' | 'tip', title: string, bodyHtml: 
   return `<aside class="callout ${kind}"><span class="c-title">${esc(title)}</span>${bodyHtml}</aside>`;
 }
 
+export function exercise(title: string, steps: string[], takeaway?: string): string {
+  return `<aside class="exercise">
+  <p class="ex-title"><span class="ex-badge">Exercise</span>${esc(title)}</p>
+  <ol>${steps.map((s) => `<li>${s}</li>`).join('\n')}</ol>
+  ${takeaway ? `<p class="ex-takeaway">${takeaway}</p>` : ''}
+</aside>`;
+}
+
 export function sectionHtml(sec: Section): string {
   return `<section class="lesson" id="${sec.code}">
   <span class="sec-num">${String(sec.num).padStart(2, '0')}</span>
