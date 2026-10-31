@@ -1,0 +1,29 @@
+import type { Section } from '../types.ts';
+
+export const SECTION: Section = {
+  code: 'prompts-and-context',
+  num: 9,
+  title: 'What is a “prompt” or “context”?',
+  tagline: 'What you send — and what silently steers every reply.',
+  prose() {
+    return `<div class="prose">
+<p>The <strong>prompt</strong> is simply the text you hand to the model. The <strong>context</strong> is everything the model gets to see when it answers: your latest message, yes — plus the conversation so far, plus instructions you never wrote.</p>
+<p>Those hidden instructions are the <strong>system prompt</strong>: directions given to the AI about how to respond, what to say, and what not to say. Every product ships one. It's why the same underlying model can behave like a cautious coding assistant in one app and a chatty coach in another.</p>
+<div class="ntq">SYSTEM: You are a careful tutor. Never give the final answer before the student tries.<span class="caret">&#9613;</span></div>
+<p>Remember the context window from section 3: on every message, all of this — system prompt, history, your new line — is re-fed inside that fixed window. “Context” isn't memory; it's just what fit.</p>
+</div>`;
+  },
+  slides() {
+    return [
+      `<h2>Prompt vs. context</h2>
+<ul class="big">
+<li><strong>Prompt:</strong> the text you send right now</li>
+<li><strong>Context:</strong> everything visible when answering — your message + history + hidden instructions</li>
+<li>Re-fed through the fixed window on every single turn</li>
+</ul>`,
+      `<h2>The system prompt</h2>
+<div class="ntq">SYSTEM: You are a careful tutor. Never give the final answer before the student tries.<span class="caret">&#9613;</span></div>
+<p class="sub">Instructions on how to respond, what to say — and what not to say. Same model, different product, different system prompt.</p>`,
+    ];
+  },
+};
