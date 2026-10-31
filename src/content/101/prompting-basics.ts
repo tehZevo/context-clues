@@ -10,7 +10,7 @@ export const SECTION: Section = {
     return `<div class="prose">
 <p>“Prompting” can mean several things — designing system prompts, engineering elaborate templates. For this course we'll keep it simple: <strong>prompting = the messages you send to a chat LLM.</strong></p>
 <p>The bar for entry is zero. Any text is a valid input: full sentences, single words, emoji. There is no magic syntax to memorize before your first conversation works.</p>
-${callout('tip', 'Context beats keywords', '<p>A search engine wants your shortest keyword string. An LLM does the opposite — it rewards background. “Why might my tomatoes be curling?” gets a fine answer; add “planted in raised beds, zone 6, last frost early May” and it gets <em>your</em> answer.</p>')}
+${callout('tip', 'Context beats keywords', '<p>A search engine wants your shortest keyword string. An LLM does the opposite — it rewards background. “Why is my laptop so slow?” gets a fine answer; add “four years old, 8 GB RAM” and it gets <em>your</em> answer.</p>')}
 ${exercise('Try it: same question, different context', [
   'Open any AI chat service (ChatGPT, Claude, Gemini, whatever you have).',
   'Ask something vague: <strong>“Why are my tomatoes curling?”</strong> Notice the reply reads like a generic gardening article.',

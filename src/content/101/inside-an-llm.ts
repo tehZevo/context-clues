@@ -31,6 +31,7 @@ ${nextToken('Today, the weather in the desert will be', [
   { t: '"crowded"', p: 3 },
 ])}
 <p class="chips-note">Illustrative numbers, but the shape of the process is exactly this.</p>
+<p>The pick isn't always the top scorer: models sample from these probabilities, which is why asking the same question twice can give you two different answers.</p>
 <h3>The context window</h3>
 <p>An LLM can only see a <strong>large but fixed-size window</strong> of text at once. Inputs larger than the window have to be handled somehow: trimmed, or compacted into something smaller. In practice that plumbing lives in the software around the model: harnesses that summarize, cache, and re-feed context for you (more on that in 201 · Agentic AI).</p>
 ${ctxWinDemo(LONG_TEXT)}

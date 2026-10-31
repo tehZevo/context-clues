@@ -12,11 +12,19 @@ export function venn(): string {
 export interface FlowStep { t: string; d: string }
 
 export function flow(steps: FlowStep[]): string {
-  const parts = steps.map((s, i) => {
-    const box = `<div class="fstep"><span class="fs-num">${String(i + 1).padStart(2, '0')}</span><p class="fs-t">${esc(s.t)}</p><p class="fs-d">${s.d}</p></div>`;
-    return i === steps.length - 1 ? box : `${box}<span class="farrow">&rarr;</span>`;
-  });
-  return `<div class="flow">${parts.join('')}</div>`;
+  const box = (s: FlowStep, i: number) => `<div class="fstep"><span class="fs-num">${String(i + 1).padStart(2, '0')}</span><p class="fs-t">${esc(s.t)}</p><p class="fs-d">${s.d}</p></div>`;
+  const perRow = steps.length === 4 ? 2 : steps.length;
+  const rows: string[] = [];
+  for (let r = 0; r < steps.length; r += perRow) {
+    const end = Math.min(r + perRow, steps.length);
+    const parts: string[] = [];
+    for (let i = r; i < end; i++) {
+      parts.push(box(steps[i], i));
+      if (i < end - 1) parts.push('<span class="farrow"><svg width="28" height="16" viewBox="0 0 28 16" aria-hidden="true"><line x1="1" y1="8" x2="19" y2="8" stroke="currentColor" stroke-width="2"/><polygon points="18,2 28,8 18,14" fill="currentColor"/></svg></span>');
+    }
+    rows.push(`<div class="frow">${parts.join('')}</div>`);
+  }
+  return `<div class="flow">${rows.join('<span class="fdown"><svg width="16" height="28" viewBox="0 0 16 28" aria-hidden="true"><line x1="8" y1="1" x2="8" y2="19" stroke="currentColor" stroke-width="2"/><polygon points="2,18 8,28 14,18" fill="currentColor"/></svg></span>')}</div>`;
 }
 
 export interface TokenOption { t: string; p: number }
