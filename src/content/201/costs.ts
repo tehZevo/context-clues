@@ -15,7 +15,7 @@ export const SECTION: Section = {
 <li><strong>Generation</strong> — the model writing its own output. The most expensive per token.</li>
 </ul>
 <p>A single long agent task reads and writes far more text than a single chat, so it can cost many times as much. That is why cloud AI is sold as subscriptions with usage windows (per month, or per few hours) rather than unlimited plans. Providers also sell models in <strong>tiers</strong>: a light model that is fast and cheap, and a heavy one that is slower and pricier but better at planning. Picking the right tier for each job is most of what “using agents efficiently” means.</p>
-${callout('note', 'Use the cheap model by default', '<p>Most of an agent\u2019s steps are routine: read a file, list a folder, reformat text. A cheap model does those fine. Save the expensive model for the moments where judgment actually matters.</p>')}
+${callout('note', 'Pick the model per task', '<p>Routine jobs like summarizing a page or tidying files run fine on a cheap model. Multi-step work that needs judgment is where a heavy model earns its price. In practice you choose a model when you start a task, not mid-task.</p>')}
 </div>`;
   },
 };
