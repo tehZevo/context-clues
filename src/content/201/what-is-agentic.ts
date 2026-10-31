@@ -16,8 +16,8 @@ export const SECTION: Section = {
 <li>“Check competitor prices every morning and write me a summary.”</li>
 </ul>
 <p>The shift is that the output becomes an <strong>action</strong>. The model itself hasn't changed: it still only produces text, exactly as 101 described. What changed is what that text gets plugged into.</p>
-<p>You may have already seen agentic behavior inside an ordinary chat app: some search the web before answering, or generate a chart as part of the reply. That is the same machinery in miniature. The chat window is quietly wired to tools, and the model reaches for them when a plain answer isn't enough.</p>
-${callout('note', 'Not a new kind of model', '<p>An agent is not a smarter species of AI. It is the same chat model you already know, wired up to tools and given a loop. The intelligence is identical; the leverage is new.</p>')}
+<p>You may have already seen agentic behavior inside an ordinary chat app: some search the web before answering, or generate a chart as part of the reply. That is the same setup at a smaller scale: the chat app calls tools behind the scenes, and the model uses one when a plain answer isn't enough.</p>
+${callout('note', 'Not a new kind of model', '<p>An agent is not a new kind of model. It is the same chat model you already know, wired to tools and run in a loop. Nothing about the model itself changed.</p>')}
 </div>`;
   },
 };

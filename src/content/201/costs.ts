@@ -14,9 +14,9 @@ export const SECTION: Section = {
 <li><strong>Prompt processing</strong> — new input: your files, a fetched web page, fresh tool output. Must be read from scratch, so it costs more.</li>
 <li><strong>Generation</strong> — the model writing its own output. The most expensive per token.</li>
 </ul>
-<p>An agent reads and writes all day, so a single long task can cost more than a hundred casual chats. That is why cloud AI is sold as subscriptions with usage windows (per month, or per few hours) rather than unlimited plans.</p>
+<p>A single long agent task reads and writes far more text than a single chat, so it can cost many times as much. That is why cloud AI is sold as subscriptions with usage windows (per month, or per few hours) rather than unlimited plans.</p>
 <p>Providers also sell models in <strong>tiers</strong>: a light model that is fast and cheap, and a heavy one that is slower and pricier but better at planning. Good harnesses route accordingly: the light model handles routine steps like summarizing a page, the heavy model plans the work. Haiku-class versus Opus-class, for example. Picking the right tier for each job is most of what “using agents efficiently” means.</p>
-${callout('note', 'The cheap-trick rule', '<p>Most of an agent\u2019s steps are boring: read a file, list a folder, reformat text. A cheap model does those fine. Save the expensive model for the moments where judgment actually matters.</p>')}
+${callout('note', 'Use the cheap model by default', '<p>Most of an agent\u2019s steps are routine: read a file, list a folder, reformat text. A cheap model does those fine. Save the expensive model for the moments where judgment actually matters.</p>')}
 </div>`;
   },
 };
