@@ -8,10 +8,15 @@ body.page {
 
 .topbar {
   position: sticky; top: 0; z-index: 50;
-  background: rgb(246 247 250 / 0.85); backdrop-filter: blur(10px);
+  background: var(--topbar-bg); backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);
 }
 .topbar-in { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 12px; flex-wrap: wrap; }
+.tb-right { display: flex; align-items: center; gap: 14px; }
+.theme-switch { display: flex; gap: 2px; background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px; padding: 3px; }
+.theme-switch button { display: flex; align-items: center; justify-content: center; width: 30px; height: 26px; border: 0; border-radius: 8px; background: transparent; color: var(--muted); cursor: pointer; }
+.theme-switch button:hover { color: var(--ink); }
+.theme-switch button.active { background: var(--surface); color: var(--accent); box-shadow: var(--shadow); }
 .brand { display: inline-flex; align-items: center; gap: 9px; font-weight: 700; letter-spacing: -0.01em; color: var(--ink); text-decoration: none; font-size: 15.5px; }
 .brand-dot { width: 14px; height: 14px; border-radius: 5px; background: var(--grad); }
 .tabs { display: flex; gap: 6px; flex-wrap: wrap; }
@@ -81,7 +86,7 @@ a.card:hover { transform: translateY(-2px); border-color: var(--accent); }
   .toc-list {
     display: none; position: absolute; top: calc(100% + 6px); left: 0; right: 0;
     background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
-    box-shadow: 0 16px 40px -12px rgb(27 36 55 / 0.25); padding: 8px; max-height: 60vh; overflow: auto;
+    box-shadow: var(--pop-shadow); padding: 8px; max-height: 60vh; overflow: auto;
   }
   .toc.open .toc-list { display: flex; }
 }

@@ -21,4 +21,73 @@
   --radius: 14px;
   --font: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --topbar-bg: rgb(246 247 250 / 0.85);
+  --pop-shadow: 0 16px 40px -12px rgb(27 36 55 / 0.25);
+  --pill-bg: rgb(255 255 255 / 0.85);
+  --pill-ink: #3b3b4f;
+  --ml-ink: #7e22ce;
+  --dl-ink: #0f766e;
+  --ai-fill: rgb(99 102 241 / 0.14);
+  --ml-fill: rgb(168 85 247 / 0.16);
+  --dl-fill: rgb(20 184 166 / 0.18);
+}
+
+/* ---- dark theme (system default or manual) ---- */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e1117;
+    --surface: #161a23;
+    --surface-2: #1e2430;
+    --ink: #e7eaf3;
+    --muted: #9aa4b8;
+    --line: #2a3140;
+    --accent: #7c7ff2;
+    --accent-ink: #a5a7ff;
+    --accent-soft: #232449;
+    --teal: #2dd4bf;
+    --warn-bg: #241b0f;
+    --warn-line: #6b4f1d;
+    --warn-ink: #f0c987;
+    --tip-bg: #10241a;
+    --tip-line: #2c5a41;
+    --tip-ink: #a7d8bb;
+    --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 8px 24px -12px rgb(0 0 0 / 0.5);
+    --topbar-bg: rgb(14 17 23 / 0.85);
+    --pop-shadow: 0 16px 40px -12px rgb(0 0 0 / 0.6);
+    --pill-bg: rgb(22 26 35 / 0.88);
+    --pill-ink: #cfd6e4;
+    --ml-ink: #c084fc;
+    --dl-ink: #2dd4bf;
+    --ai-fill: rgb(129 140 248 / 0.16);
+    --ml-fill: rgb(192 132 252 / 0.14);
+    --dl-fill: rgb(45 212 191 / 0.14);
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0e1117;
+  --surface: #161a23;
+  --surface-2: #1e2430;
+  --ink: #e7eaf3;
+  --muted: #9aa4b8;
+  --line: #2a3140;
+  --accent: #7c7ff2;
+  --accent-ink: #a5a7ff;
+  --accent-soft: #232449;
+  --teal: #2dd4bf;
+  --warn-bg: #241b0f;
+  --warn-line: #6b4f1d;
+  --warn-ink: #f0c987;
+  --tip-bg: #10241a;
+  --tip-line: #2c5a41;
+  --tip-ink: #a7d8bb;
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 8px 24px -12px rgb(0 0 0 / 0.5);
+  --topbar-bg: rgb(14 17 23 / 0.85);
+  --pop-shadow: 0 16px 40px -12px rgb(0 0 0 / 0.6);
+  --pill-bg: rgb(22 26 35 / 0.88);
+  --pill-ink: #cfd6e4;
+  --ml-ink: #c084fc;
+  --dl-ink: #2dd4bf;
+  --ai-fill: rgb(129 140 248 / 0.16);
+  --ml-fill: rgb(192 132 252 / 0.14);
+  --dl-fill: rgb(45 212 191 / 0.14);
 }

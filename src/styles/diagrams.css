@@ -3,14 +3,14 @@
 /* venn: AI ⊃ ML ⊃ DL */
 .venn { position: relative; max-width: 430px; margin: 28px auto; aspect-ratio: 1; }
 .venn .ring { position: absolute; border-radius: 50%; border: 2px solid; display: block; }
-.venn .r-ai { inset: 0; border-color: #6366f1; background: rgb(99 102 241 / 0.14); }
-.venn .r-ml { inset: 20%; border-color: #a855f7; background: rgb(168 85 247 / 0.16); }
-.venn .r-dl { inset: 40%; border-color: #14b8a6; background: rgb(20 184 166 / 0.18); }
+.venn .r-ai { inset: 0; border-color: #6366f1; background: var(--ai-fill); }
+.venn .r-ml { inset: 20%; border-color: #a855f7; background: var(--ml-fill); }
+.venn .r-dl { inset: 40%; border-color: #14b8a6; background: var(--dl-fill); }
 .venn .rlab { position: absolute; left: 50%; transform: translateX(-50%); font-weight: 700; letter-spacing: 0.06em; white-space: nowrap; text-align: center; }
 .venn .l-ai { top: 5%; color: var(--accent-ink); }
-.venn .l-ml { top: 26.5%; color: #7e22ce; }
-.venn .l-dl { top: 46.5%; color: #0f766e; }
-.venn .rlab small { display: block; font-weight: 500; font-size: 12px; color: #3b3b4f; letter-spacing: 0; max-width: 30ch; white-space: normal; margin-top: 3px; background: rgb(255 255 255 / 0.85); border-radius: 9px; padding: 1px 10px; }
+.venn .l-ml { top: 26.5%; color: var(--ml-ink); }
+.venn .l-dl { top: 46.5%; color: var(--dl-ink); }
+.venn .rlab small { display: block; font-weight: 500; font-size: 12px; color: var(--pill-ink); letter-spacing: 0; max-width: 30ch; white-space: normal; margin-top: 3px; background: var(--pill-bg); border-radius: 9px; padding: 1px 10px; }
 
 /* perceptron */
 .perc { margin: 26px auto; max-width: 540px; }
@@ -19,11 +19,11 @@
 .perc .in { fill: var(--accent-soft); stroke: var(--accent); stroke-width: 1.6; }
 .perc .tin { font-size: 13px; fill: var(--accent-ink); text-anchor: middle; dominant-baseline: middle; }
 .perc .w { font-size: 12px; fill: var(--muted); }
-.perc .node { fill: rgb(168 85 247 / 0.13); stroke: #a855f7; stroke-width: 2; }
-.perc .sigma { font-size: 26px; fill: #7e22ce; text-anchor: middle; dominant-baseline: middle; }
+.perc .node { fill: var(--ml-fill); stroke: #a855f7; stroke-width: 2; }
+.perc .sigma { font-size: 26px; fill: var(--ml-ink); text-anchor: middle; dominant-baseline: middle; }
 .perc .tip { fill: color-mix(in srgb, var(--accent) 60%, transparent); }
-.perc .outbox { fill: rgb(20 184 166 / 0.13); stroke: #0f766e; stroke-width: 1.6; }
-.perc .tout { font-size: 13px; fill: #0f766e; text-anchor: middle; dominant-baseline: middle; }
+.perc .outbox { fill: var(--dl-fill); stroke: var(--dl-ink); stroke-width: 1.6; }
+.perc .tout { font-size: 13px; fill: var(--dl-ink); text-anchor: middle; dominant-baseline: middle; }
 .perc figcaption { text-align: center; color: var(--muted); font-size: 13px; margin-top: 8px; max-width: 52ch; margin-inline: auto; }
 
 /* flow: numbered steps with arrows */
