@@ -24,12 +24,13 @@ export const COURSES: CourseMeta[] = [
     tagline: 'Images, audio, video — seeing and being seen by models.',
     live: false,
   },
-  {
-    code: '401',
-    title: 'The Singularity',
-    tagline: 'AGI, ASI, and the accelerators we are living through.',
-    live: false,
-  },
+  // hidden for now
+  // {
+  //   code: '401',
+  //   title: 'The Singularity',
+  //   tagline: 'AGI, ASI, and the accelerators we are living through.',
+  //   live: false,
+  // },
 ];
 
 export const SITE_NAME = 'Context Clues';
