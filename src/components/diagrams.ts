@@ -34,6 +34,29 @@ export function chips(items: string[], note?: string): string {
   return `<div class="chips">${items.map((t) => `<span class="chip">${esc(t)}</span>`).join('')}${note ? `<p class="chips-note">${esc(note)}</p>` : ''}</div>`;
 }
 
+export function perceptron(): string {
+  return `<figure class="perc" role="img" aria-label="A perceptron: three weighted inputs feed a summing node that produces one output">
+  <svg viewBox="0 0 524 190">
+    <line class="edge" x1="78" y1="37" x2="246" y2="90"/>
+    <line class="edge" x1="78" y1="95" x2="244" y2="95"/>
+    <line class="edge" x1="78" y1="153" x2="246" y2="100"/>
+    <text class="w" x="150" y="52">w₁</text>
+    <text class="w" x="156" y="87">w₂</text>
+    <text class="w" x="150" y="148">w₃</text>
+    <circle class="in" cx="60" cy="35" r="18"/><text class="tin" x="60" y="36">x₁</text>
+    <circle class="in" cx="60" cy="95" r="18"/><text class="tin" x="60" y="96">x₂</text>
+    <circle class="in" cx="60" cy="155" r="18"/><text class="tin" x="60" y="156">x₃</text>
+    <circle class="node" cx="282" cy="95" r="38"/>
+    <text class="sigma" x="282" y="96">Σ</text>
+    <line class="edge" x1="320" y1="95" x2="416" y2="95"/>
+    <polygon class="tip" points="416,89 430,95 416,101"/>
+    <rect class="outbox" x="436" y="76" width="84" height="38" rx="10"/>
+    <text class="tout" x="478" y="96">output</text>
+  </svg>
+  <figcaption>Numbers in, weighted and summed, one decision out.</figcaption>
+</figure>`;
+}
+
 export function tokenDemo(sample: string): string {
   return `<div class="demo" data-demo="tokens">
   <label for="tok-${sample.length}">Try it — type anything and watch it get chopped into tokens</label>

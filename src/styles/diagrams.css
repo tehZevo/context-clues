@@ -12,6 +12,20 @@
 .venn .l-dl { top: 46.5%; color: #0f766e; }
 .venn .rlab small { display: block; font-weight: 500; font-size: 12px; color: #3b3b4f; letter-spacing: 0; max-width: 30ch; white-space: normal; margin-top: 3px; background: rgb(255 255 255 / 0.85); border-radius: 9px; padding: 1px 10px; }
 
+/* perceptron */
+.perc { margin: 26px auto; max-width: 540px; }
+.perc svg { width: 100%; height: auto; display: block; font-family: var(--mono); }
+.perc .edge { stroke: color-mix(in srgb, var(--accent) 45%, transparent); stroke-width: 1.6; }
+.perc .in { fill: var(--accent-soft); stroke: var(--accent); stroke-width: 1.6; }
+.perc .tin { font-size: 13px; fill: var(--accent-ink); text-anchor: middle; dominant-baseline: middle; }
+.perc .w { font-size: 12px; fill: var(--muted); }
+.perc .node { fill: rgb(168 85 247 / 0.13); stroke: #a855f7; stroke-width: 2; }
+.perc .sigma { font-size: 26px; fill: #7e22ce; text-anchor: middle; dominant-baseline: middle; }
+.perc .tip { fill: color-mix(in srgb, var(--accent) 60%, transparent); }
+.perc .outbox { fill: rgb(20 184 166 / 0.13); stroke: #0f766e; stroke-width: 1.6; }
+.perc .tout { font-size: 13px; fill: #0f766e; text-anchor: middle; dominant-baseline: middle; }
+.perc figcaption { text-align: center; color: var(--muted); font-size: 13px; margin-top: 8px; max-width: 52ch; margin-inline: auto; }
+
 /* flow: numbered steps with arrows */
 .flow { display: flex; align-items: stretch; gap: 0; margin: 24px 0; flex-wrap: wrap; }
 .fstep {
@@ -48,7 +62,7 @@
 
 /* chat mock */
 .chat { display: flex; flex-direction: column; gap: 10px; margin: 18px 0; max-width: 560px; }
-.msg { border-radius: 14px; padding: 10px 14px; font-size: 14.5px; line-height: 1.5; border: 1px solid var(--line); background: var(--surface); }
+.msg { border-radius: 14px; padding: 10px 14px; font-size: 14.5px; line-height: 1.5; border: 1px solid var(--line); background: var(--surface); max-width: min(78%, 46ch); width: fit-content; }
 .msg .who { display: block; font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 3px; font-weight: 700; }
 .msg.user { align-self: flex-end; background: var(--accent-soft); border-color: color-mix(in srgb, var(--accent) 30%, transparent); }
 

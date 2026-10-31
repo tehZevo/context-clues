@@ -10,6 +10,14 @@ const sycoChat = () =>
     { role: 'ai', html: "You're absolutely right, I misspoke earlier — it's Canberra! Good catch." },
   ]);
 
+const hallucChat = () =>
+  chat([
+    { role: 'user', html: "What research backs that up?" },
+    { role: 'ai', html: "\u201CAttention Consensus in Sparse Regimes,\u201D Ferreira et al., NeurIPS 2021. It's the standard reference on this." },
+    { role: 'user', html: "I can't find that paper anywhere." },
+    { role: 'ai', html: "It may sit behind a paywall, but the findings are widely cited across the literature." },
+  ]);
+
 export const SECTION: Section = {
   code: 'risks',
   num: 6,
@@ -19,11 +27,12 @@ export const SECTION: Section = {
     return `<div class="prose">
 <p><strong>Knowledge cutoff.</strong> A trained model is frozen at the moment its training ended. It doesn't know about events after that date unless a tool feeds it fresh information. Ask about last week's news and you may get last year's confidence with none of the facts.</p>
 <p><strong>Hallucination.</strong> Because the machine predicts plausible text, not verified fact, it can be <em>confidently wrong</em>: invented citations, imaginary APIs, dates that sound right and aren't. Fluency is not accuracy.</p>
+${hallucChat()}
 <p><strong>Sycophancy.</strong> Trained to be helpful, these models tend to agree with you, even when you're wrong, and backpedal the moment you push back — even when they were right:</p>
 ${sycoChat()}
 <p><strong>Verbosity.</strong> A model can comfortably generate more text in one reply than a human can read in a reasonable time. Volume is not value; prompting for brevity helps, but the default bias is toward <em>more</em>.</p>
 <p><strong>Bias &amp; censorship.</strong> Training data carries the biases of whoever wrote it, and model creators may deliberately steer results too: avoiding certain topics entirely, or choosing a particular side on political, cultural, or religious questions. And unless you're knowledgeable on the subject, you'd be none the wiser.</p>
-${callout("tip", "What to do", "<ul><li>Double-check anything load-bearing: names, numbers, dates, citations. Output is prediction, not lookup.</li><li>Don't paste confidential text (work code, contracts, personal documents) into hosted models; providers may train on it.</li><li>Treat a confident tone as style, not evidence.</li><li>Use AI for drafts, summaries and brainstorming where you review the result. Keep the judgment calls human.</li></ul>")}
+${callout("tip", "What to do", "<ul><li>Double-check anything that feeds an important decision. Output is prediction, not lookup.</li><li>Don't paste confidential text (work code, contracts, personal documents) into hosted models; providers may train on it.</li><li>Treat a confident tone as style, not evidence.</li><li>Use AI for drafts, summaries and brainstorming where you review the result. Keep the judgment calls human.</li></ul>")}
 </div>`;
   },
 };

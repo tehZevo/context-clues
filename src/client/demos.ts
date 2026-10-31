@@ -61,11 +61,12 @@
 
     const render = (): void => {
       const n = Math.min(Number(slider.value), words.length);
-      spans.forEach((s, k) => s.classList.toggle('out', k >= n));
+      const dropped = words.length - n;
+      spans.forEach((s, k) => s.classList.toggle('out', k < dropped));
       if (meta) {
         meta.innerHTML =
-          `<span>window: last ${words.length - n} word${words.length - n === 1 ? '' : 's'} dropped from the end</span>` +
-          `<span>${words.length - n > 0 ? `${n} of ${words.length} still in the window` : 'whole input fits — drag left to drop words'}</span>`;
+          `<span>first ${dropped} word${dropped === 1 ? '' : 's'} dropped from the start</span>` +
+          `<span>${dropped > 0 ? `${n} of ${words.length} still in the window` : 'whole input fits — drag left to drop words'}</span>`;
       }
     };
 

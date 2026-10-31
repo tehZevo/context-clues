@@ -20,7 +20,7 @@ ${exercise('Try it: summarize something long', [
   'Find something genuinely long that you never read voluntarily: a terms-of-service page, a news article, a work document.',
   'Paste the whole thing into a chat and ask: “summarize this in five bullet points.”',
 ], 'A document you never planned to read, condensed into five lines you actually finished. Summarization is one area where LLMs really shine.')}
-<p>You now have the whole mental model for 101: models learn functions from examples, LLMs continue tokens inside a fixed window, chat is a framing trick, and you know where the machinery lies to. Everything after this course builds on those four sentences.</p>
+<p>You now have the whole mental model for 101: models learn functions from examples, LLMs continue tokens inside a fixed window, and chat is just a framing trick over that machinery. Everything after this course builds on those pieces.</p>
 </div>`;
   },
 };

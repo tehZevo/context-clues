@@ -34,7 +34,7 @@ ${nextToken('Today, the weather in the desert will be', [
 <h3>The context window</h3>
 <p>An LLM can only see a <strong>large but fixed-size window</strong> of text at once. Inputs larger than the window have to be handled somehow: trimmed, or compacted into something smaller. In practice that plumbing lives in the software around the model: harnesses that summarize, cache, and re-feed context for you (more on that in 201 · Agentic AI).</p>
 ${ctxWinDemo(LONG_TEXT)}
-<h3>Beyond text in</h3>
+<h3>Beyond text</h3>
 <p>Modern LLMs are <strong>multimodal</strong>: not only text input/output, but images and audio go in too. The same predict-next-piece machinery still runs underneath — there's just more kinds of "pieces."</p>
 </div>`;
   },

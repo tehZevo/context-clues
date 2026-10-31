@@ -53,7 +53,8 @@ a.card:hover { transform: translateY(-2px); border-color: var(--accent); }
 
 /* ---- course layout & sticky sidebar TOC ---- */
 .main:has(.course-layout) { max-width: 1200px; }
-.course-hero { display: flex; gap: 20px; align-items: center; padding-block: 6px; }
+.course-hero { display: flex; gap: 20px; align-items: flex-start; padding-block: 6px; }
+.course-hero h1 { margin-top: -13px; }
 .code-badge.big { font-size: 24px; padding: 10px 16px; border-radius: 12px; }
 .course-layout { display: grid; grid-template-columns: 236px minmax(0, 1fr); gap: 52px; }
 .toc-list {
@@ -91,6 +92,7 @@ section.lesson { margin-top: 56px; padding-top: 34px; border-top: 1px solid var(
 h2.sec-title { font-size: clamp(1.35rem, 3vw, 1.8rem); letter-spacing: -0.015em; margin: 0 0 6px; line-height: 1.2; }
 .tagline.sec-tag { color: var(--muted); margin: 0 0 1.4em; font-size: 16.5px; max-width: 65ch; }
 
+.prose { max-width: 70ch; }
 .prose h3 { font-size: 17.5px; letter-spacing: -0.01em; margin: 1.8em 0 0.4em; }
 .prose p { margin: 0.6em 0 1em; max-width: 70ch; }
 .prose ul, .prose ol { max-width: 70ch; padding-left: 22px; margin: 0.4em 0 1.1em; }
