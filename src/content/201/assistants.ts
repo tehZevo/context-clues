@@ -27,7 +27,7 @@ ${agentDefs()}
 <figure>${lvlPersistent()}</figure>
 <p><strong>4. Persistent agents.</strong> These listen in the background or run on a schedule instead of waiting for you to open an app: a standing work environment, recurring jobs (“every morning, sort my inbox”), and memory that grows as you use them. Open-source options run on a machine you provide; hosted offerings run on the provider's servers under an identity of their own, posting and messaging on platforms the way a person would.</p>
 </div>
-${callout('note', 'Names age fast', '<p>This list is a snapshot of late 2026. Product names will change, but the levels are the stable part: more access, more autonomy, more accounts. The safety habits in the next section apply at every level.</p>')}
+${callout('note', 'Names age fast', '<p>This list is a snapshot of late 2026. Product names will change, but levels are more stable: more access, more autonomy, more accounts. The safety habits in the next section apply at every level.</p>')}
 </div>`;
   },
 };
