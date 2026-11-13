@@ -121,6 +121,23 @@ export function toolSim(): string {
 </div>`;
 }
 
+export function skillSim(): string {
+  const step = (who: string, content: string, code = false) =>
+    `<li class="ts-step"><span class="ts-who">${who}</span>${code ? `<code>${esc(content)}</code>` : `<span>${esc(content)}</span>`}</li>`;
+  const steps = [
+    step('skills', 'names in context: meeting-summary, weekly-report, title-rewrite'),
+    step('agent', 'meeting-summary matches this task'),
+    step('harness', 'loads the skill body into the context window'),
+    step('skill', 'attendees → decisions → follow-ups with owners', true),
+    step('agent', 'Attendees: Ana, Sam, Priya. Decisions: ship Thursday. Follow-up: Sam writes the release notes.'),
+  ];
+  return `<div class="demo" data-demo="toolsim">
+  <label>Try it — watch an agent find and use a skill</label>
+  <div class="ts-scene" data-scene="0"><p class="ts-q">You: <span>summarize the standup notes I pasted</span></p><ol class="ts-steps">${steps.join('\n')}</ol></div>
+  <button class="ts-run" type="button">Run it</button>
+</div>`;
+}
+
 export interface Turn { role: 'user' | 'ai'; html: string }
 
 export function chat(turns: Turn[]): string {

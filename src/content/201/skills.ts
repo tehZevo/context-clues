@@ -1,4 +1,5 @@
 import type { Section } from '../types.ts';
+import { skillSim } from '../../components/diagrams.ts';
 import { callout, exercise } from '../../components/ui.ts';
 
 const skillFile = `<div class="skill-file"><pre>---
@@ -20,6 +21,7 @@ export const SECTION: Section = {
 <p>Agents get more useful as they know how <em>you</em> want work done. A <strong>skill</strong> is the common way to convey that: a short, written procedure for a repeatable task, like summarizing meeting notes or formatting a weekly report.</p>
 <p>At minimum, a skill has a <strong>name</strong>, a <strong>description</strong>, and a <strong>body</strong> of instructions. The model normally sees only the one-line list of names and descriptions; when one matches the task at hand, the harness loads the body into the context window. Nothing is trained into the model. A skill is just text, added when relevant.</p>
 ${skillFile}
+${skillSim()}
 <p>Some agents store skills as markdown files like the one above; others give you separate fields for name, description, and instructions. More advanced tools let a skill folder carry reference material or scripts the agent can pull in when it needs them.</p>
 ${callout('note', 'Skills vs memory', '<p>Memory stores facts about you and your world. Skills store procedures: how you prefer a task to be done. Both are plain text the harness feeds into the context window, and both are worth reviewing now and then.</p>')}
 ${exercise('Try it: create a simple skill', [

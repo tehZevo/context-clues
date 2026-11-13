@@ -78,7 +78,8 @@
   document.querySelectorAll<HTMLElement>('[data-demo="toolsim"]').forEach((root) => {
     const btn = root.querySelector<HTMLButtonElement>('.ts-run');
     const select = root.querySelector<HTMLSelectElement>('.ts-select');
-    if (!btn || !select) return;
+    if (!btn) return;
+    const label = btn.textContent ?? 'Run';
     const scenes = Array.from(root.querySelectorAll<HTMLElement>('.ts-scene'));
     let timers: number[] = [];
     const clear = (): void => {
@@ -89,15 +90,17 @@
       clear();
       scene.querySelectorAll<HTMLElement>('.ts-step').forEach((s) => s.classList.remove('on'));
       btn.disabled = false;
-      btn.textContent = 'Run the loop';
+      btn.textContent = label;
     };
-    const current = (): HTMLElement => scenes[Number(select.selectedIndex)] ?? scenes[0];
-    select.addEventListener('change', () => {
-      scenes.forEach((s, k) => {
-        s.hidden = k !== Number(select.selectedIndex);
+    const current = (): HTMLElement =>
+      select ? scenes[Number(select.selectedIndex)] ?? scenes[0] : scenes[0];
+    if (select)
+      select.addEventListener('change', () => {
+        scenes.forEach((s, k) => {
+          s.hidden = k !== Number(select.selectedIndex);
+        });
+        reset(current());
       });
-      reset(current());
-    });
     btn.addEventListener('click', () => {
       const scene = current();
       const steps = Array.from(scene.querySelectorAll<HTMLElement>('.ts-step'));
