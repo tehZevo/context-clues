@@ -6,5 +6,6 @@ import { SECTION as s4 } from './prompt-injection.ts';
 import { SECTION as s5 } from './costs.ts';
 import { SECTION as s6 } from './memory.ts';
 import { SECTION as s7 } from './skills.ts';
+import { SECTION as s8 } from './scheduled-tasks.ts';
 
-export const SECTIONS: Section[] = [s1, s2, s3, s4, s5, s6, s7];
+export const SECTIONS: Section[] = [s1, s2, s3, s4, s5, s6, s7, s8];
