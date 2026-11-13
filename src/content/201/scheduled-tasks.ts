@@ -12,7 +12,7 @@ export const SECTION: Section = {
 <p>A scheduled task is a saved setup: a prompt, the connections it needs (email, files, Slack, a repo), and a cadence. “Every Monday at 9, summarize last week's messages in the team channel.” The task runs on the provider's servers, so it keeps running with your laptop closed, and you read the result when it's ready.</p>
 <p>Other providers may let you run a task automatically in other ways: on an <strong>API call</strong> (the task gets a URL and a token, so another system can trigger it), or on an <strong>event</strong> like a new email, a price change, or a file change. Monitoring tasks use the same setup: the agent checks something on a schedule and only messages you when it judges the change is worth reporting.</p>
 <p>A finished run isn't automatically a correct one. Read the first few results and tighten the prompt before putting a task on a permanent schedule.</p>
-${callout('note', 'Routines vs skills', '<p>A skill is how you want a task done. A scheduled task is when to do it. The two combine: schedule a task that runs a skill every Monday morning.</p>')}
+${callout('note', 'Routines vs skills', '<p>A skill is how you want a task done. A scheduled task is when to do it. The two can be combined: schedule a task that runs a skill every Monday morning.</p>')}
 ${exercise('Try it: schedule one recurring task', [
   'Pick something you already ask an agent for weekly: a summary, a check, a rewrite.',
   'Create a scheduled task for it, using the same wording you would use in chat, and set a cadence.',
