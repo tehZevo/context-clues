@@ -36,8 +36,7 @@ export const SECTION: Section = {
   tagline: 'The model writes text; the harness makes it act.',
   prose() {
     return `<div class="prose">
-<p>Remember the catch from 101: a model can't <em>do</em> anything. Its entire output is a stream of predicted tokens. So how does an agent book a flight or fix a file?</p>
-<p>The answer is the <strong>harness</strong>: the software wrapped around the model. The harness gives the model a system prompt and a menu of tools (“you can search, read files, run commands”). When the model wants to act, it writes a structured request like <code>search: flights to Lisbon Friday</code>. The harness recognizes that, actually performs the search, and pastes the results back into the conversation as more text. The model reads them and continues.</p>
+<p>A model's output is a stream of predicted tokens, so how can it book a flight or fix a file? The answer is the <strong>harness</strong>: the software wrapped around the model. The harness gives the model a system prompt and a menu of tools (“you can search, read files, run commands”). When the model wants to act, it writes a structured request like <code>search: flights to Lisbon Friday</code>. The harness recognizes that, actually performs the search, and pastes the results back into the conversation as more text. The model reads them and continues.</p>
 ${loop()}
 <p>That loop, repeated several times, is what allows an agent to do useful work.</p>
 ${toolSim()}
