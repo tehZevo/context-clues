@@ -12,8 +12,8 @@ export const SECTION: Section = {
 <p>Here are some examples of goals you can hand to an agentic AI tool:</p>
 <ul>
 <li>“Tidy my downloads folder, sorted by project.”</li>
-<li>“Watch this inbox and draft replies to customer questions.”</li>
-<li>“Check competitor prices every morning and write me a summary.”</li>
+<li>“Draft replies to the unread messages in my inbox.”</li>
+<li>“Check the weather every morning and suggest what to wear.”</li>
 </ul>
 <p>The shift is that the output becomes an <strong>action</strong>. The model itself hasn't changed: it still only produces text, exactly as 101 described. What changed is what that text gets plugged into.</p>
 <p>You may have already seen agentic behavior inside an ordinary chat app: some search the web before answering, or generate a chart as part of the reply. That is the same setup at a smaller scale: the chat app calls tools behind the scenes, and the model uses one when a plain answer isn't enough.</p>
