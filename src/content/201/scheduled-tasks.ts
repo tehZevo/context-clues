@@ -8,7 +8,7 @@ export const SECTION: Section = {
   tagline: 'A saved prompt on a clock: recurring agent work.',
   prose() {
     return `<div class="prose">
-<p>Once you trust an agent with a task you do regularly, the next step is to stop asking for it: give it a schedule. Cloud AI providers use different names for this: routines, scheduled tasks, scheduled actions.</p>
+<p>Once you trust an agent with a task you do regularly, the next step is to stop asking for it: give it a schedule. Cloud AI providers use different names for this, such as routines, scheduled tasks, or scheduled actions.</p>
 <p>A scheduled task is a saved setup: a prompt, the connections it needs (email, files, Slack, a repo), and a cadence. “Every Monday at 9, summarize last week's messages in the team channel.” The task runs on the provider's servers, so it keeps running with your laptop closed, and you read the result when it's ready.</p>
 <p>Two triggers exist besides the clock. An <strong>API call</strong>: the task gets a URL and a token, so your alerting system or a deploy hook can fire it like a function. An <strong>event</strong>: a new pull request, a price change, a package delivery. Monitoring tasks use the same setup: the agent checks something on a schedule and only messages you when it judges the change is worth reporting.</p>
 <p>A finished run isn't automatically a correct one. Read the first few results and tighten the prompt before putting a task on a permanent schedule.</p>
