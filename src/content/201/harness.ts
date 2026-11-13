@@ -40,7 +40,7 @@ export const SECTION: Section = {
 ${loop()}
 <p>That loop, repeated several times, is what allows an agent to do useful work.</p>
 ${toolSim()}
-${callout('tip', 'Why this matters for safety', '<p>What an agent can reach is set by the harness: which folders, apps, and accounts you connect, and which actions need your approval first. That is where the safety controls live: permissions, approval prompts, and an activity log you can read.</p>')}
+${callout('tip', 'Why this matters for safety', '<p>What an agent can reach is set by the harness: which folders, apps, and accounts you connect, and which actions need your approval first. The controls to look for are permissions, approval prompts, and an activity log you can read.</p>')}
 ${exercise('Try it: watch an agent use its tools', [
   'Ask any agent to research something or read and summarize a web page for you, like \u201cread this page and give me five bullet points\u201d.',
   'Look for the paper trail while it works: many agents show the tool calls as they happen (\u201csearching\u2026\u201d, \u201cfetching page\u2026\u201d) or list web references in the answer.',
