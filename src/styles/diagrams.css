@@ -50,6 +50,19 @@
 .skill-file { background: var(--surface-2); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; overflow-x: auto; }
 .skill-file pre { font-family: var(--mono); font-size: 12.5px; line-height: 1.6; color: var(--ink); }
 
+/* tool-call simulator */
+.ts-q { font-size: 13.5px; color: var(--muted); margin: 0 0 10px; }
+.ts-q span { color: var(--ink); }
+.ts-steps { list-style: none; margin: 0 0 12px; padding: 0; display: flex; flex-direction: column; gap: 8px; min-height: 150px; }
+.ts-step { display: none; align-items: baseline; gap: 10px; animation: ts-in .3s ease; }
+.ts-step.on { display: flex; }
+.ts-who { flex: 0 0 74px; font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+.ts-step code { font-family: var(--mono); font-size: 12.5px; background: var(--surface-2); border: 1px solid var(--line); border-radius: 6px; padding: 2px 8px; color: var(--ink); }
+.ts-step > span:not(.ts-who) { font-size: 13px; color: var(--muted); }
+.ts-run { font: inherit; font-weight: 650; font-size: 13px; color: var(--accent-ink); background: var(--accent-soft); border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent); border-radius: 8px; padding: 6px 14px; cursor: pointer; }
+.ts-run:disabled { opacity: .6; cursor: default; }
+@keyframes ts-in { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+
 /* token chips */
 .chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 14px 0; align-items: center; max-width: 75ch; }
 .chip {

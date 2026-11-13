@@ -3,7 +3,7 @@ import { callout, exercise } from '../../components/ui.ts';
 
 export const SECTION: Section = {
   code: 'memory',
-  num: 5,
+  num: 6,
   title: 'Memory',
   tagline: 'Some agents keep notes. The model itself never changes.',
   prose() {

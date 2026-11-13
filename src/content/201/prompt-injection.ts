@@ -3,7 +3,7 @@ import { callout } from '../../components/ui.ts';
 
 export const SECTION: Section = {
   code: 'prompt-injection',
-  num: 3,
+  num: 4,
   title: 'Scam mail for robots',
   tagline: 'Anything your agent reads can try to give it orders.',
   prose() {

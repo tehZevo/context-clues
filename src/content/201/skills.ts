@@ -12,7 +12,7 @@ When summarizing meeting notes:
 
 export const SECTION: Section = {
   code: 'skills',
-  num: 6,
+  num: 7,
   title: 'Skills',
   tagline: 'Write a procedure once; your agent follows it every time.',
   prose() {

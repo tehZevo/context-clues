@@ -74,6 +74,28 @@
     render();
   });
 
+  /* tool-call simulator: reveal the loop one step at a time */
+  document.querySelectorAll<HTMLElement>('[data-demo="toolsim"]').forEach((root) => {
+    const btn = root.querySelector<HTMLButtonElement>('.ts-run');
+    const steps = Array.from(root.querySelectorAll<HTMLElement>('.ts-step'));
+    if (!btn) return;
+    const play = (): void => {
+      steps.forEach((s) => s.classList.remove('on'));
+      btn.disabled = true;
+      btn.textContent = 'running…';
+      steps.forEach((s, i) => {
+        window.setTimeout(() => {
+          s.classList.add('on');
+          if (i === steps.length - 1) {
+            btn.disabled = false;
+            btn.textContent = 'Run again';
+          }
+        }, 650 * (i + 1));
+      });
+    };
+    btn.addEventListener('click', play);
+  });
+
   /* theme switcher: light / dark / system, persisted, defaults to system */
   const themeBtns = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-theme-set]'));
   if (themeBtns.length) {

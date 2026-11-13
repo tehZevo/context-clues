@@ -3,7 +3,7 @@ import { callout } from '../../components/ui.ts';
 
 export const SECTION: Section = {
   code: 'costs',
-  num: 4,
+  num: 5,
   title: 'Why agents cost what they do',
   tagline: 'New reading costs, rereading is cached, writing costs most.',
   prose() {

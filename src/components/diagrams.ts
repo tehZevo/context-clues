@@ -84,6 +84,20 @@ export function ctxWinDemo(text: string): string {
 </div>`;
 }
 
+export function toolSim(): string {
+  return `<div class="demo" data-demo="toolsim">
+  <label>Try it — run one turn of the agent loop</label>
+  <p class="ts-q">You: <span>check the weather in Lisbon and tell me if I need a jacket</span></p>
+  <ol class="ts-steps">
+    <li class="ts-step"><span class="ts-who">model</span><code>tool request: get_weather(city="Lisbon")</code></li>
+    <li class="ts-step"><span class="ts-who">harness</span><span>recognizes the request and runs the real tool</span></li>
+    <li class="ts-step"><span class="ts-who">result</span><code>17°C, partly cloudy</code></li>
+    <li class="ts-step"><span class="ts-who">model</span><span>17°C and partly cloudy in Lisbon — a light layer is enough.</span></li>
+  </ol>
+  <button class="ts-run" type="button">Run the loop</button>
+</div>`;
+}
+
 export interface Turn { role: 'user' | 'ai'; html: string }
 
 export function chat(turns: Turn[]): string {

@@ -1,5 +1,6 @@
 import type { Section } from '../types.ts';
 import { esc } from '../../frame.ts';
+import { toolSim } from '../../components/diagrams.ts';
 import { callout, exercise } from '../../components/ui.ts';
 
 const ARROW_R = '<svg width="28" height="16" viewBox="0 0 28 16" aria-hidden="true"><line x1="1" y1="8" x2="19" y2="8" stroke="currentColor" stroke-width="2"/><polygon points="18,2 28,8 18,14" fill="currentColor"/></svg>';
@@ -39,6 +40,7 @@ export const SECTION: Section = {
 <p>The answer is the <strong>harness</strong>: ordinary software wrapped around the model. The harness gives the model a system prompt and a menu of tools (“you can search, read files, run commands”). When the model wants to act, it writes a structured request like <code>search: flights to Lisbon Friday</code>. The harness recognizes that, actually performs the search, and pastes the results back into the conversation as more text. The model reads them and continues.</p>
 ${loop()}
 <p>That loop, repeated a few dozen times, is what looks like an AI “using a computer.” The model decides each step; the harness carries it out.</p>
+${toolSim()}
 ${callout('tip', 'Why this matters for safety', '<p>The model never touches your files or your email. The harness does, and the harness is ordinary software you control: it is where approvals, permissions and activity logs live.</p>')}
 ${exercise('Try it: watch an agent use its tools', [
   'Ask any agent to research something or read and summarize a web page for you, like \u201cread this page and give me five bullet points\u201d.',
