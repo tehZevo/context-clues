@@ -43,7 +43,7 @@ ${toolSim()}
 ${callout('tip', 'Why this matters for safety', '<p>What an agent can reach is set by the harness: which folders, apps, and accounts you connect, and which actions need your approval first. The controls to look for are permissions, approval prompts, and an activity log you can read.</p>')}
 ${exercise('Try it: watch an agent use its tools', [
   'Ask any agent to read and summarize a web page for you, like \u201cread this page and give me five bullet points\u201d.',
-  'While it works, watch for the tool calls the app shows as they happen (\u201csearching\u2026\u201d, \u201cfetching page\u2026\u201d) \u2014 that is the Act and Observe steps in real time.',
+  'While it works, watch for the tool calls the app shows as they happen (\u201csearching\u2026\u201d, \u201cfetching page\u2026\u201d) \u2014 these are the Act and Observe steps in real time.',
   'The answer usually cites the pages it read. Open one of them and check the summary against what the page actually says.',
 ], 'The model did not magically know the page. It asked the harness to fetch it, then read the result like any other text.')}
 </div>`;
