@@ -14,7 +14,7 @@ export const SECTION: Section = {
 <p><strong>3. Persistent agents.</strong> Open-source assistants like OpenClaw and Hermes run all the time instead of when you open an app: a standing work environment, tasks on a schedule (“every morning, sort my inbox”), and memory that grows as you use them.</p>
 <p><strong>4. Agents with their own accounts.</strong> A recent class of hosted products gives agents an identity of their own: Grok’s bot, Meta’s Muse, OpenAI’s Dots. The agent posts, messages, and acts on platforms under its own name, doing work for several people at once.</p>
 <p><strong>5. Sub-agents.</strong> A common trick inside all of the above: the main agent hands a subtask to a helper agent with its own fresh context (“research these five vendors and report back in ten lines”), then keeps the short report and throws away the noisy working notes. It keeps the main conversation small and cheap.</p>
-${callout('note', 'Names age fast', '<p>This list is a snapshot of late 2025. Product names will churn; the levels themselves are the durable part: more access, more autonomy, more accounts. The safety habits in the next section apply at every level.</p>')}
+${callout('note', 'Names age fast', '<p>This list is a snapshot of late 2026. Product names will churn; the levels themselves are the durable part: more access, more autonomy, more accounts. The safety habits in the next section apply at every level.</p>')}
 </div>`;
   },
 };
