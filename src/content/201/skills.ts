@@ -17,7 +17,7 @@ export const SECTION: Section = {
   tagline: 'Write a procedure once; your agent follows it every time.',
   prose() {
     return `<div class="prose">
-<p>Agents get more useful as they know how <em>you</em> want work done. A <strong>skill</strong> is the common way to teach that: a short, written procedure for a repeatable task, like summarizing meeting notes or formatting a weekly report.</p>
+<p>Agents get more useful as they know how <em>you</em> want work done. A <strong>skill</strong> is the common way to convey that: a short, written procedure for a repeatable task, like summarizing meeting notes or formatting a weekly report.</p>
 <p>At minimum, a skill has a <strong>name</strong> and a <strong>description</strong>. The model normally sees only that one-line list of names and descriptions; when one matches the task at hand, the harness loads the full instructions into the context window. Nothing is trained into the model. A skill is just text, added when relevant.</p>
 ${skillFile}
 <p>Some agents store skills as markdown files like the one above; others give you separate fields for name, description, and instructions. More advanced tools let a skill folder carry reference material or scripts the agent can pull in when it needs them.</p>
