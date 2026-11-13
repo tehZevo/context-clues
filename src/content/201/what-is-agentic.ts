@@ -4,7 +4,7 @@ import { callout } from '../../components/ui.ts';
 export const SECTION: Section = {
   code: 'what-is-agentic',
   num: 1,
-  title: 'When AI starts doing things',
+  title: 'What makes AI agentic',
   tagline: 'From answering questions to getting things done.',
   prose() {
     return `<div class="prose">
