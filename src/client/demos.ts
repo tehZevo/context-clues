@@ -74,26 +74,49 @@
     render();
   });
 
-  /* tool-call simulator: reveal the loop one step at a time */
+  /* tool-call simulator: pick a scenario, reveal the loop one step at a time */
   document.querySelectorAll<HTMLElement>('[data-demo="toolsim"]').forEach((root) => {
     const btn = root.querySelector<HTMLButtonElement>('.ts-run');
-    const steps = Array.from(root.querySelectorAll<HTMLElement>('.ts-step'));
-    if (!btn) return;
-    const play = (): void => {
-      steps.forEach((s) => s.classList.remove('on'));
+    const select = root.querySelector<HTMLSelectElement>('.ts-select');
+    if (!btn || !select) return;
+    const scenes = Array.from(root.querySelectorAll<HTMLElement>('.ts-scene'));
+    let timers: number[] = [];
+    const clear = (): void => {
+      timers.forEach((t) => window.clearTimeout(t));
+      timers = [];
+    };
+    const reset = (scene: HTMLElement): void => {
+      clear();
+      scene.querySelectorAll<HTMLElement>('.ts-step').forEach((s) => s.classList.remove('on'));
+      btn.disabled = false;
+      btn.textContent = 'Run the loop';
+    };
+    const current = (): HTMLElement => scenes[Number(select.selectedIndex)] ?? scenes[0];
+    select.addEventListener('change', () => {
+      scenes.forEach((s, k) => {
+        s.hidden = k !== Number(select.selectedIndex);
+      });
+      reset(current());
+    });
+    btn.addEventListener('click', () => {
+      const scene = current();
+      const steps = Array.from(scene.querySelectorAll<HTMLElement>('.ts-step'));
+      clear();
+      scene.querySelectorAll<HTMLElement>('.ts-step').forEach((s) => s.classList.remove('on'));
       btn.disabled = true;
       btn.textContent = 'running…';
       steps.forEach((s, i) => {
-        window.setTimeout(() => {
-          s.classList.add('on');
-          if (i === steps.length - 1) {
-            btn.disabled = false;
-            btn.textContent = 'Run again';
-          }
-        }, 650 * (i + 1));
+        timers.push(
+          window.setTimeout(() => {
+            s.classList.add('on');
+            if (i === steps.length - 1) {
+              btn.disabled = false;
+              btn.textContent = 'Run again';
+            }
+          }, 650 * (i + 1)),
+        );
       });
-    };
-    btn.addEventListener('click', play);
+    });
   });
 
   /* theme switcher: light / dark / system, persisted, defaults to system */

@@ -85,15 +85,38 @@ export function ctxWinDemo(text: string): string {
 }
 
 export function toolSim(): string {
+  const step = (who: string, content: string, code = false) =>
+    `<li class="ts-step"><span class="ts-who">${who}</span>${code ? `<code>${esc(content)}</code>` : `<span>${esc(content)}</span>`}</li>`;
+  const scene = (i: number, q: string, steps: string[], hidden: boolean) =>
+    `<div class="ts-scene"${hidden ? ' hidden' : ''} data-scene="${i}"><p class="ts-q">${q}</p><ol class="ts-steps">${steps.join('\n')}</ol></div>`;
+  const scenes = [
+    scene(0, 'You: <span>check the weather in Lisbon and tell me if I need a jacket</span>', [
+      step('model', 'tool request: get_weather(city="Lisbon")', true),
+      step('harness', 'recognizes the request and runs the real tool'),
+      step('result', '17°C, partly cloudy', true),
+      step('model', '17°C and partly cloudy in Lisbon — a light layer is enough.'),
+    ], false),
+    scene(1, 'You: <span>find the restaurant Sam recommended last week</span>', [
+      step('model', 'tool request: search_email(query="Sam restaurant")', true),
+      step('harness', 'searches the connected mailbox'),
+      step('result', 'email from Sam: “you have to try Taberna Forno”', true),
+      step('model', 'Sam recommended Taberna Forno.'),
+    ], true),
+    scene(2, 'You: <span>what time does it open on Saturday?</span> <em>(follow-up)</em>', [
+      step('model', 'tool request: web_search(query="Taberna Forno opening hours")', true),
+      step('harness', 'runs the search and reads the result'),
+      step('result', 'Tue–Sun 17:00–23:00', true),
+      step('model', 'It opens at 17:00 on Saturdays.'),
+    ], true),
+  ];
   return `<div class="demo" data-demo="toolsim">
-  <label>Try it — run one turn of the agent loop</label>
-  <p class="ts-q">You: <span>check the weather in Lisbon and tell me if I need a jacket</span></p>
-  <ol class="ts-steps">
-    <li class="ts-step"><span class="ts-who">model</span><code>tool request: get_weather(city="Lisbon")</code></li>
-    <li class="ts-step"><span class="ts-who">harness</span><span>recognizes the request and runs the real tool</span></li>
-    <li class="ts-step"><span class="ts-who">result</span><code>17°C, partly cloudy</code></li>
-    <li class="ts-step"><span class="ts-who">model</span><span>17°C and partly cloudy in Lisbon — a light layer is enough.</span></li>
-  </ol>
+  <label for="ts-select">Try it — pick a request and run one turn of the agent loop</label>
+  <select class="ts-select" id="ts-select">
+    <option>Check the weather in Lisbon</option>
+    <option>Find Sam's restaurant recommendation</option>
+    <option>Follow-up: what time does it open?</option>
+  </select>
+  ${scenes.join('\n')}
   <button class="ts-run" type="button">Run the loop</button>
 </div>`;
 }
