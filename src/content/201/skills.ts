@@ -1,4 +1,5 @@
 import type { Section } from '../types.ts';
+import { skillSim } from '../../components/diagrams.ts';
 import { callout, exercise } from '../../components/ui.ts';
 
 const skillFile = `<div class="skill-file"><pre>---
@@ -12,16 +13,19 @@ When summarizing meeting notes:
 
 export const SECTION: Section = {
   code: 'skills',
-  num: 6,
+  num: 7,
   title: 'Skills',
   tagline: 'Write a procedure once; your agent follows it every time.',
   prose() {
     return `<div class="prose">
-<p>Agents get more useful as they know how <em>you</em> want work done. A <strong>skill</strong> is the common way to teach that: a short, written procedure for a repeatable task, like summarizing meeting notes or formatting a weekly report.</p>
-<p>A skill is deliberately plain. At minimum it has a <strong>name</strong> and a <strong>description</strong>. The model normally sees only that one-line list of names and descriptions; when one matches the task at hand, the harness loads the full instructions into the context window. Nothing is trained into the model. A skill is just text, added when relevant.</p>
+<p>Agents get more useful when they know how <em>you</em> want work done. A <strong>skill</strong> is the common way to convey that: a short, written procedure for a repeatable task, like summarizing meeting notes or formatting a weekly report.</p>
+<p>At minimum, a skill has a <strong>name</strong>, a <strong>description</strong>, and a <strong>body</strong> of instructions. The model normally sees only the one-line list of names and descriptions; when one matches the task at hand, the harness loads the body into the context window. Nothing is trained into the model. A skill is just text, added when relevant.</p>
 ${skillFile}
-<p>Some agents store skills as markdown files like the one above; others give you separate fields for name, description, and instructions. It is the same thing either way. More advanced tools let a skill folder carry reference material or scripts the agent can pull in when it needs them.</p>
-${callout('note', 'Skills vs memory', '<p>Memory stores facts about you and your world. Skills store procedures: how you like a task done. Both are plain text the harness feeds into the context window, and both are worth reviewing now and then.</p>')}
+<p>Some agents store skills as markdown files like the one above; others give you separate fields for name, description, and instructions. More advanced tools let a skill folder carry reference material or scripts the agent can pull in when it needs them.</p>
+<p>Some agents can also write the skill for you: ask one to “create a skill to capture the research process we just went through” and it turns the steps from the current conversation into a skill file you can review and keep.</p>
+${skillSim()}
+${callout('note', 'Skills vs memory', '<p>Memory stores facts about you and your world. Skills store procedures: how you prefer a task to be done. Both are plain text the harness feeds into the context window, and both are worth reviewing now and then.</p>')}
+${callout('tip', 'When a skill is ignored', '<p>If an agent isn\u2019t following a skill, first confirm the skill is actually loading. If it isn\u2019t, the description may be the problem: add detail and keywords until the agent recognizes when it applies.</p>')}
 ${exercise('Try it: create a simple skill', [
   'Pick a small task you repeat: summarizing meeting notes, rewriting titles, turning a thread into a to-do list.',
   'Write it as a skill: a name, a one-line description, and a few lines of instructions. Save it as a markdown file if your agent reads those, or paste the same text into its name/description/instructions fields.',

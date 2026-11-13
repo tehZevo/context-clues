@@ -55,5 +55,5 @@ if (process.argv.includes('--serve')) {
     } catch {
       res.writeHead(404).end('not found');
     }
-  }).listen(port, () => console.log(`serving dist at http://localhost:${port}/`));
+  }).listen(port, process.env.HOST || '0.0.0.0', () => console.log(`serving dist at http://localhost:${port}/`));
 }

@@ -74,6 +74,54 @@
     render();
   });
 
+  /* tool-call simulator: pick a scenario, reveal the loop one step at a time */
+  document.querySelectorAll<HTMLElement>('[data-demo="toolsim"]').forEach((root) => {
+    const btn = root.querySelector<HTMLButtonElement>('.ts-run');
+    const select = root.querySelector<HTMLSelectElement>('.ts-select');
+    if (!btn) return;
+    const label = btn.textContent ?? 'Run';
+    const scenes = Array.from(root.querySelectorAll<HTMLElement>('.ts-scene'));
+    let timers: number[] = [];
+    const clear = (): void => {
+      timers.forEach((t) => window.clearTimeout(t));
+      timers = [];
+    };
+    const reset = (scene: HTMLElement): void => {
+      clear();
+      scene.querySelectorAll<HTMLElement>('.ts-step').forEach((s) => s.classList.remove('on'));
+      btn.disabled = false;
+      btn.textContent = label;
+    };
+    const current = (): HTMLElement =>
+      select ? scenes[Number(select.selectedIndex)] ?? scenes[0] : scenes[0];
+    if (select)
+      select.addEventListener('change', () => {
+        scenes.forEach((s, k) => {
+          s.hidden = k !== Number(select.selectedIndex);
+        });
+        reset(current());
+      });
+    btn.addEventListener('click', () => {
+      const scene = current();
+      const steps = Array.from(scene.querySelectorAll<HTMLElement>('.ts-step'));
+      clear();
+      scene.querySelectorAll<HTMLElement>('.ts-step').forEach((s) => s.classList.remove('on'));
+      btn.disabled = true;
+      btn.textContent = 'running…';
+      steps.forEach((s, i) => {
+        timers.push(
+          window.setTimeout(() => {
+            s.classList.add('on');
+            if (i === steps.length - 1) {
+              btn.disabled = false;
+              btn.textContent = 'Run again';
+            }
+          }, 650 * (i + 1)),
+        );
+      });
+    });
+  });
+
   /* theme switcher: light / dark / system, persisted, defaults to system */
   const themeBtns = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-theme-set]'));
   if (themeBtns.length) {
