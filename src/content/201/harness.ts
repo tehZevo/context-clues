@@ -13,7 +13,7 @@ const loop = () => {
     { t: 'Think', d: 'the model reads the task and the results so far, and decides the next step' },
     { t: 'Act', d: 'it writes a tool request: search this, open that file, run this command' },
     { t: 'Observe', d: 'the harness runs the tool and pastes the real result back into the conversation' },
-    { t: 'Repeat', d: 'loop until the goal is met, then report back in plain language' },
+    { t: 'Repeat', d: 'loop until the task is complete, then report back in plain language' },
   ];
   const box = (s: { t: string; d: string }, i: number, area: string) =>
     `<div class="fstep" style="grid-area:${area}"><span class="fs-num">${String(i + 1).padStart(2, '0')}</span><p class="fs-t">${esc(s.t)}</p><p class="fs-d">${s.d}</p></div>`;
