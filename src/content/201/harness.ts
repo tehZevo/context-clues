@@ -10,7 +10,7 @@ const ARROW_U = '<svg width="16" height="28" viewBox="0 0 16 28" aria-hidden="tr
 
 const loop = () => {
   const steps = [
-    { t: 'Think', d: 'the model reads the goal and the results so far, and decides the next step' },
+    { t: 'Think', d: 'the model reads the task and the results so far, and decides the next step' },
     { t: 'Act', d: 'it writes a tool request: search this, open that file, run this command' },
     { t: 'Observe', d: 'the harness runs the tool and pastes the real result back into the conversation' },
     { t: 'Repeat', d: 'loop until the goal is met, then report back in plain language' },
