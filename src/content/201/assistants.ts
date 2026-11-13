@@ -8,7 +8,7 @@ export const SECTION: Section = {
   tagline: 'From desktop helpers to agents with their own computers.',
   prose() {
     return `<div class="prose">
-<p>“An agent” is not one thing. The products ship in steps, and each step gives the model a bit more room to act. The ladder, from most familiar to newest:</p>
+<p>Agents come in different levels of autonomy: how much room the product gives the model to act on its own. The levels, from least autonomous to most:</p>
 <p><strong>1. Chat apps with tools.</strong> The rung you already know from 101: ChatGPT, Claude, and Gemini answering a question after quietly searching the web or running a quick calculation.</p>
 <p><strong>2. Desktop apps.</strong> ChatGPT, Claude, and Gemini all ship desktop versions, and this is where tools get real: reading and editing files on your machine, connecting to your calendar or email through <strong>connectors</strong> (the open standard for these is called MCP), and in some cases watching your screen to use an app the way you would. The agent works <em>on your computer</em>, under an app you launch.</p>
 <p><strong>3. Persistent agents.</strong> Open-source assistants like OpenClaw and Hermes run all the time instead of when you open an app: a standing work environment, tasks on a schedule (“every morning, sort my inbox”), and memory that grows as you use them.</p>
