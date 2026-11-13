@@ -39,7 +39,7 @@ export const SECTION: Section = {
 <p>Remember the catch from 101: a model can't <em>do</em> anything. Its entire output is a stream of predicted tokens. So how does an agent book a flight or fix a file?</p>
 <p>The answer is the <strong>harness</strong>: the software wrapped around the model. The harness gives the model a system prompt and a menu of tools (“you can search, read files, run commands”). When the model wants to act, it writes a structured request like <code>search: flights to Lisbon Friday</code>. The harness recognizes that, actually performs the search, and pastes the results back into the conversation as more text. The model reads them and continues.</p>
 ${loop()}
-<p>That loop, repeated a few dozen times, is what looks like an AI “using a computer.” The model decides each step; the harness carries it out.</p>
+<p>That loop, repeated several times, is what an agent doing work on your computer actually looks like.</p>
 ${toolSim()}
 ${callout('tip', 'Why this matters for safety', '<p>What an agent can reach is set by the harness: which folders, apps, and accounts you connect, and which actions need your approval first. That is where the safety controls live: permissions, approval prompts, and an activity log you can read.</p>')}
 ${exercise('Try it: watch an agent use its tools', [
