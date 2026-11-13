@@ -8,7 +8,7 @@ export const SECTION: Section = {
   tagline: 'From answering questions to getting things done.',
   prose() {
     return `<div class="prose">
-<p>In 101, AI answered you: you ask, it writes, it stops. Agentic AI is given a <strong>goal</strong> and acts on your behalf until it's done: reading and writing files, browsing the web, sending mail, running programs.</p>
+<p>In 101, AI answered you: you ask, it writes, it stops. Agentic AI is given a <strong>task or goal</strong> and acts on your behalf until it's done: reading and writing files, browsing the web, sending mail, running programs.</p>
 <p>Here are some examples of goals you can hand to an agentic AI tool:</p>
 <ul>
 <li>“Tidy my downloads folder, sorted by project.”</li>
