@@ -41,7 +41,7 @@ export const SECTION: Section = {
 ${loop()}
 <p>That loop, repeated a few dozen times, is what looks like an AI “using a computer.” The model decides each step; the harness carries it out.</p>
 ${toolSim()}
-${callout('tip', 'Why this matters for safety', '<p>The model never touches your files or your email. The harness does, and the harness is ordinary software you control: it is where approvals, permissions and activity logs live.</p>')}
+${callout('tip', 'Why this matters for safety', '<p>What an agent can reach is set by the harness: which folders, apps, and accounts you connect, and which actions need your approval first. That is where the safety controls live: permissions, approval prompts, and an activity log you can read.</p>')}
 ${exercise('Try it: watch an agent use its tools', [
   'Ask any agent to research something or read and summarize a web page for you, like \u201cread this page and give me five bullet points\u201d.',
   'Look for the paper trail while it works: many agents show the tool calls as they happen (\u201csearching\u2026\u201d, \u201cfetching page\u2026\u201d) or list web references in the answer.',
