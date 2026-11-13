@@ -16,7 +16,7 @@ export const COURSES: CourseMeta[] = [
     code: '201',
     title: 'Agentic AI',
     tagline: 'Models, harnesses, and AI that acts on your behalf.',
-    live: false,
+    live: true,
   },
   {
     code: '301',
