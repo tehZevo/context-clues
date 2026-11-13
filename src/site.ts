@@ -88,4 +88,4 @@ export const SINGLE_HTML: string = singleShell('AI courses', [
   { id: 'index', body: indexPage(true).body },
   { id: '101', body: coursePage('101')!.body },
   { id: '201', body: coursePage('201')!.body },
-]);
+], 'context-clues.html');

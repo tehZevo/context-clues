@@ -48,6 +48,10 @@ ${desc ? `<meta name="description" content="${esc(desc)}">` : ''}
 <style>__STYLE_CSS__</style>`;
 }
 
+export function downloadButton(href: string): string {
+  return `<a class="dl-btn" href="${href}" download title="Download the whole course as one HTML file" aria-label="Download the whole course as one HTML file"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>`;
+}
+
 export function shell(p: PageDef): string {
   const header =
     p.variant === 'page'
@@ -56,6 +60,7 @@ export function shell(p: PageDef): string {
       <a class="brand" href="${p.root}index.html"><span class="brand-dot"></span>${SITE_NAME}</a>
       <div class="tb-right">
       ${tabBar(p.root, p.activeTab)}
+      ${downloadButton(`${p.root}context-clues.html`)}
       ${themeSwitch()}
       </div>
     </div>
@@ -91,12 +96,13 @@ export interface SinglePage {
   body: string;
 }
 
-export function singleShell(title: string, pages: SinglePage[]): string {
+export function singleShell(title: string, pages: SinglePage[], selfHref = 'index.html'): string {
   const header = `  <header class="topbar">
     <div class="wrap topbar-in">
       <a class="brand" href="#index"><span class="brand-dot"></span>${SITE_NAME}</a>
       <div class="tb-right">
       ${tabBar('#', 'index')}
+      ${downloadButton(selfHref)}
       ${themeSwitch()}
       </div>
     </div>
