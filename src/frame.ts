@@ -96,13 +96,12 @@ export interface SinglePage {
   body: string;
 }
 
-export function singleShell(title: string, pages: SinglePage[], selfHref = 'index.html'): string {
+export function singleShell(title: string, pages: SinglePage[]): string {
   const header = `  <header class="topbar">
     <div class="wrap topbar-in">
       <a class="brand" href="#index"><span class="brand-dot"></span>${SITE_NAME}</a>
       <div class="tb-right">
       ${tabBar('#', 'index')}
-      ${downloadButton(selfHref)}
       ${themeSwitch()}
       </div>
     </div>
