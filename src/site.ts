@@ -1,5 +1,5 @@
-import { shell } from './frame.ts';
-import type { PageDef } from './frame.ts';
+import { shell, singleShell } from './frame.ts';
+import type { PageDef, SinglePage } from './frame.ts';
 import { esc } from './frame.ts';
 import { COURSES, SITE_NAME } from './catalog.ts';
 import { SECTIONS as S101 } from './content/101/index.ts';
@@ -9,13 +9,13 @@ import type { Section } from './content/types.ts';
 
 const COURSE_SECTIONS: Record<string, Section[]> = { '101': S101, '201': S201 };
 
-function indexPage(): PageDef {
+function indexPage(hashLinks = false): PageDef {
   const cards = COURSES.map((c) => {
     const inner = `<span class="code-badge">${c.code}</span>
       <h3>${esc(c.title)}</h3>
       <p class="tagline">${esc(c.tagline)}</p>`;
     return c.live
-      ? `<a class="card" href="${c.code}/">${inner}<span class="meta">${COURSE_SECTIONS[c.code]?.length ?? 0} sections</span></a>`
+      ? `<a class="card" href="${hashLinks ? `#${c.code}` : `${c.code}/`}">${inner}<span class="meta">${COURSE_SECTIONS[c.code]?.length ?? 0} sections</span></a>`
       : `<div class="card soon"><span class="soon-tag">coming soon</span>${inner}</div>`;
   }).join('\n    ');
 
@@ -83,3 +83,9 @@ ${SECTIONS.map((s) => sectionHtml(s)).join('\n')}
 
 export { shell } from './frame.ts';
 export const PAGES: PageDef[] = [indexPage(), coursePage('101'), coursePage('201')].flatMap((p) => (p ? [p] : []));
+
+export const SINGLE_HTML: string = singleShell('AI courses', [
+  { id: 'index', body: indexPage(true).body },
+  { id: '101', body: coursePage('101')!.body },
+  { id: '201', body: coursePage('201')!.body },
+]);

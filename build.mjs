@@ -25,7 +25,7 @@ const inject = (s, token, val) => s.split(token).join(val);
 
 const siteCode = await bundle(src('site.ts'));
 const mod = await import(`data:text/javascript;base64,${Buffer.from(siteCode).toString('base64')}`);
-const { PAGES, shell } = mod;
+const { PAGES, shell, SINGLE_HTML } = mod;
 
 const css = (
   await Promise.all(['tokens', 'layout', 'diagrams'].map((f) => readFile(src(`styles/${f}.css`), 'utf8')))
@@ -33,15 +33,23 @@ const css = (
 const demos = await bundle(src('client/demos.ts'), true);
 
 await rm(distDir, { recursive: true, force: true });
-let bytes = 0;
-for (const p of PAGES) {
-  const html = inject(inject(shell(p), '__STYLE_CSS__', css), '__SCRIPT_DEMOS__', demos);
-  bytes += html.length;
-  const file = join(distDir, p.out);
-  await mkdir(dirname(file), { recursive: true });
-  await writeFile(file, html);
+await mkdir(distDir, { recursive: true });
+const singleHtml = inject(inject(SINGLE_HTML, '__STYLE_CSS__', css), '__SCRIPT_DEMOS__', demos);
+if (!process.argv.includes('--single-only')) {
+  let bytes = 0;
+  for (const p of PAGES) {
+    const html = inject(inject(shell(p), '__STYLE_CSS__', css), '__SCRIPT_DEMOS__', demos);
+    bytes += html.length;
+    const file = join(distDir, p.out);
+    await mkdir(dirname(file), { recursive: true });
+    await writeFile(file, html);
+  }
+  console.log(`built ${PAGES.length} pages (${Math.round(bytes / 1024)} KB total) -> dist/`);
 }
-console.log(`built ${PAGES.length} pages (${Math.round(bytes / 1024)} KB total) -> dist/`);
+if (!process.argv.includes('--pages-only')) {
+  await writeFile(join(distDir, 'context-clues.html'), singleHtml);
+  console.log(`built single file (${Math.round(singleHtml.length / 1024)} KB) -> dist/context-clues.html`);
+}
 
 if (process.argv.includes('--serve')) {
   const port = Number(process.env.PORT || 4173);

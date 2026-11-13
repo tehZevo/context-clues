@@ -152,9 +152,10 @@
   }
 
   /* mobile hamburger for the TOC */
-  const toc = document.querySelector<HTMLElement>('.toc');
-  const tocToggle = document.querySelector<HTMLButtonElement>('.toc-toggle');
-  if (toc && tocToggle) {
+  document.querySelectorAll<HTMLElement>('.course-layout').forEach((layout) => {
+    const toc = layout.querySelector<HTMLElement>('.toc');
+    const tocToggle = layout.querySelector<HTMLButtonElement>('.toc-toggle');
+    if (!toc || !tocToggle) return;
     const setOpen = (v: boolean): void => {
       toc.classList.toggle('open', v);
       tocToggle.setAttribute('aria-expanded', String(v));
@@ -164,7 +165,7 @@
     document.addEventListener('click', (e) => {
       if (!(e.target instanceof Element) || !e.target.closest('.toc')) setOpen(false);
     });
-  }
+  });
 
   /* scrollspy for the sticky course sidebar */
   const links = Array.from(document.querySelectorAll<HTMLAnchorElement>('.toc-link'));

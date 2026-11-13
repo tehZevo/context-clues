@@ -21,7 +21,7 @@ export function esc(s: string): string {
 export function tabBar(root: string, active?: string): string {
   const items = COURSES.map((c) =>
     c.live
-      ? `<a class="tab${c.code === active ? ' active' : ''}" href="${root}${c.code}/">${c.code} · ${esc(c.title)}</a>`
+      ? `<a class="tab${c.code === active ? ' active' : ''}" href="${root === '#' ? `#${c.code}` : `${root}${c.code}/`}">${c.code} · ${esc(c.title)}</a>`
       : `<span class="tab soon" title="Coming soon">${c.code} · ${esc(c.title)}</span>`,
   ).join('\n      ');
   return `<nav class="tabs" aria-label="Courses">
@@ -35,6 +35,17 @@ export function themeSwitch(): string {
         <button type="button" data-theme-set="dark" title="Dark" aria-label="Dark theme"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg></button>
         <button type="button" data-theme-set="system" title="System" aria-label="System theme"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></button>
       </div>`;
+}
+
+function headHtml(title: string, desc?: string): string {
+  return `<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>${esc(title)} · ${SITE_NAME}</title>
+${desc ? `<meta name="description" content="${esc(desc)}">` : ''}
+<meta name="color-scheme" content="light dark">
+<script>(function(){try{var t=localStorage.getItem('cc-theme');if(t&&t!=='system')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%234f46e5'/%3E%3Cstop offset='.55' stop-color='%237c3aed'/%3E%3Cstop offset='1' stop-color='%239333ea'/%3E%3C/defs%3E%3Crect width='16' height='16' rx='5' fill='url(%23g)'/%3E%3C/svg%3E">
+<style>__STYLE_CSS__</style>`;
 }
 
 export function shell(p: PageDef): string {
@@ -61,14 +72,7 @@ export function shell(p: PageDef): string {
   return `<!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>${esc(p.title)} · ${SITE_NAME}</title>
-${p.desc ? `<meta name="description" content="${esc(p.desc)}">` : ''}
-<meta name="color-scheme" content="light dark">
-<script>(function(){try{var t=localStorage.getItem('cc-theme');if(t&&t!=='system')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%234f46e5'/%3E%3Cstop offset='.55' stop-color='%237c3aed'/%3E%3Cstop offset='1' stop-color='%239333ea'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='16' height='16' rx='5' fill='url(%23g)'/%3E%3C/svg%3E">
-<style>__STYLE_CSS__</style>
+${headHtml(p.title, p.desc)}
 </head>
 <body class="${p.variant}">
 ${header}
@@ -77,6 +81,50 @@ ${p.body}
   </main>
 ${footer}
 <script>__SCRIPT_DEMOS__</script>
+</body>
+</html>
+`;
+}
+
+export interface SinglePage {
+  id: string;
+  body: string;
+}
+
+export function singleShell(title: string, pages: SinglePage[]): string {
+  const header = `  <header class="topbar">
+    <div class="wrap topbar-in">
+      <a class="brand" href="#index"><span class="brand-dot"></span>${SITE_NAME}</a>
+      <div class="tb-right">
+      ${tabBar('#', 'index')}
+      ${themeSwitch()}
+      </div>
+    </div>
+  </header>`;
+
+  const footer = `  <footer class="foot">
+    <div class="wrap">${SITE_NAME} · AI curriculum — <a href="#index">all courses</a></div>
+  </footer>`;
+
+  const bodies = pages
+    .map((p) => `  <main class="main wrap spage" id="page-${p.id}"${p.id === 'index' ? '' : ' hidden'}>
+${p.body}
+  </main>`)
+    .join('\n');
+
+  const router = `<script>(function(){var pages=[].slice.call(document.querySelectorAll('.spage'));var ids=pages.map(function(p){return p.id.slice(5);});var tabs=[].slice.call(document.querySelectorAll('.tab[href]'));var shown=false;function show(id){if(ids.indexOf(id)<0)id='index';var el=document.getElementById('page-'+id);pages.forEach(function(p){p.hidden=p.id!==el.id;});tabs.forEach(function(t){t.classList.toggle('active',t.getAttribute('href')==='#'+id);});shown=true;window.scrollTo(0,0);}function route(){var h=(location.hash||'#index').slice(1);if(ids.indexOf(h)>=0)show(h);else if(!shown)show('index');}window.addEventListener('hashchange',route);route();})();</script>`;
+
+  return `<!doctype html>
+<html lang="en">
+<head>
+${headHtml(title)}
+</head>
+<body class="page">
+${header}
+${bodies}
+${footer}
+<script>__SCRIPT_DEMOS__</script>
+${router}
 </body>
 </html>
 `;
