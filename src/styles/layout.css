@@ -104,6 +104,18 @@ h2.sec-title { font-size: clamp(1.35rem, 3vw, 1.8rem); letter-spacing: -0.015em;
 .prose li { margin-block: 6px; }
 .prose li::marker { color: var(--accent); }
 
+/* ---- level figures (assistants) ---- */
+.lvl { display: flex; align-items: center; gap: 24px; margin: 20px 0; max-width: 70ch; }
+.lvl p { flex: 1; min-width: 0; margin: 0; }
+.lvl figure { margin: 0; flex: 0 0 auto; color: var(--accent); }
+.lvl figure svg { display: block; width: 150px; height: auto; }
+.lvl figure.big svg { width: 190px; }
+@media (max-width: 760px) {
+  .lvl { flex-wrap: wrap; gap: 12px; }
+  .lvl figure svg { width: 110px; }
+  .lvl figure.big svg { width: 140px; }
+}
+
 /* ---- callouts ---- */
 .callout { border-radius: 12px; padding: 14px 16px; margin: 18px 0; border: 1px solid var(--line); background: var(--surface); font-size: 15px; max-width: 70ch; }
 .callout .c-title { font-weight: 700; display: block; margin-bottom: 4px; font-size: 13.5px; letter-spacing: 0.02em; }
